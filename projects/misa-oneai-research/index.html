@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MISA AMIS OneAI Deep Dive & Business Model | Nguyễn Nhật Hải</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        @media (max-width: 992px) {
+            .showcase-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .sidebar {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+        .tech-badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .tech-badge {
+            padding: 6px 12px;
+            background: rgba(139, 92, 246, 0.08);
+            border: 1px solid rgba(139, 92, 246, 0.15);
+            color: var(--accent);
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+        .download-card {
+            background: var(--accent-soft);
+            border-left: 5px solid var(--accent);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+        .spec-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+        .spec-table th, .spec-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+        .spec-table th {
+            background: rgba(139, 92, 246, 0.05);
+            color: var(--accent-strong);
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body class="theme-ai">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="nav-logo"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+            <div class="nav-links">
+                <a href="../../index.html">Home</a>
+                <a href="#overview" class="active">AI Research</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <header class="page-header">
+            <h1 style="font-size: clamp(2rem, 4vw, 3rem);"><i class="fas fa-brain"></i> MISA AMIS OneAI Deep Dive</h1>
+            <p class="subtitle">An in-depth study of MISA's enterprise multi-LLM integration gateway, credit distribution logic, and local hosting compliance</p>
+        </header>
+
+        <div class="showcase-grid">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="glass-card">
+                    <h3 style="margin-bottom: 15px;"><i class="fas fa-info-circle"></i> Research Specs</h3>
+                    
+                    <div class="tech-badge-container">
+                        <span class="tech-badge">Enterprise AI</span>
+                        <span class="tech-badge">LLM Orchestration</span>
+                        <span class="tech-badge">Data Residency</span>
+                        <span class="tech-badge">Credit Billing</span>
+                        <span class="tech-badge">Safety Gateway</span>
+                    </div>
+
+                    <div class="download-card">
+                        <h4 style="margin-bottom: 10px; color: #1a202c;"><i class="fas fa-file-invoice"></i> Read Research</h4>
+                        <p style="font-size: 0.9rem; color: #4a5568; margin-bottom: 15px;">Xem bản đặc tả in-browser dưới dạng PDF hoặc tải file tài liệu Word gốc.</p>
+                        <a href="../MISAOneAIResearch.pdf" target="_blank" class="btn btn-primary btn-small" style="width: 100%; margin-bottom: 8px; justify-content: center;">
+                            <i class="fas fa-file-pdf"></i> Xem Bản PDF (Xem Nhanh)
+                        </a>
+                        <a href="../MISAOneAIResearch.docx" download class="btn btn-outline btn-small" style="width: 100%; justify-content: center; border-color: rgba(0,0,0,0.15); color: #333;">
+                            <i class="fas fa-file-word"></i> Download DOCX
+                        </a>
+                    </div>
+
+                    <div style="font-size: 0.9rem; color: #718096; line-height: 1.5;">
+                        <p><strong>Focus Area:</strong> Business Integration, Cost & Credit Models, Compliance.</p>
+                        <p style="margin-top: 8px;"><strong>Status:</strong> Active Internal Research.</p>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="showcase-content">
+                <!-- Part 1: Product Overview -->
+                <section class="content-section" id="overview">
+                    <div class="section-header">
+                        <h2><i class="fas fa-cubes"></i> 1. Tổng quan về MISA AMIS OneAI</h2>
+                        <div class="section-badge problem">Giới thiệu</div>
+                    </div>
+                    <p>
+                        MISA AMIS OneAI là một nền tảng tích hợp nhiều mô hình AI tiên tiến hàng đầu hiện nay như 
+                        <strong>ChatGPT, Gemini, Grok, Claude, DeepSeek và MISA AI</strong>. Giải pháp này cho phép doanh nghiệp 
+                        sử dụng hàng loạt công cụ trí tuệ nhân tạo chuyên biệt ngay trên một giao diện hợp nhất thay vì phải 
+                        mua riêng lẻ từng tài khoản dịch vụ ngoại quốc, giúp tối ưu chi phí và quản lý người dùng tập trung.
+                    </p>
+                    <p style="margin-top: 10px;">
+                        Hệ thống hoạt động theo cơ chế quản lý tập trung: <strong>một subscription/cụm quản trị dùng cho toàn doanh nghiệp</strong>, 
+                        nhưng được phân rã thành nhiều tài khoản người dùng độc lập (sync từ AMIS Hệ thống), cho phép Admin cấp quyền, gán vai trò, 
+                        và phân bổ hạn mức tín dụng (credit) cực kỳ chặt chẽ.
+                    </p>
+                </section>
+
+                <!-- Part 2: End-User Capabilities -->
+                <section class="content-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-user-gear"></i> 2. Khả năng tương tác của End-User</h2>
+                        <div class="section-badge solution">Tính năng lõi</div>
+                    </div>
+                    <p>
+                        Trong OneAI, người dùng cuối (nhân viên) được trang bị một bộ công cụ làm việc toàn diện:
+                    </p>
+                    <ul style="margin-top: 15px; margin-left: 20px; line-height: 1.8;">
+                        <li><strong>Trò chuyện đa mô hình:</strong> Tự động điều phối hoặc tùy chọn mô hình mong muốn. Hỗ trợ đính kèm nhiều file (định dạng văn bản, hình ảnh) tối đa 15MB/tệp, tổng giới hạn tải lên 30MB.</li>
+                        <li><strong>So sánh kết quả song song:</strong> Cho phép gửi cùng 1 prompt tới 2 mô hình khác nhau cùng lúc, hệ thống sẽ tự động so sánh, phân tích sự khác biệt và đưa ra kết luận tổng hợp.</li>
+                        <li><strong>Chế độ Nghiên cứu sâu:</strong> Dùng để tổng hợp thông tin đa nguồn và tạo lập báo cáo chuyên sâu chi tiết dưới dạng PDF (phí 20 credit/lượt).</li>
+                        <li><strong>Tạo file đầu ra thông minh:</strong> AI có thể trả kết quả trực tiếp dưới dạng tệp văn phòng như Word, Excel, PDF, CSV, JSON, HTML... để đưa vào sử dụng ngay.</li>
+                        <li><strong>Tạo Trợ lý AI cá nhân hóa:</strong> Nạp dữ liệu tri thức riêng (lưu tối đa 500MB tài liệu tri thức) để huấn luyện trợ lý chuyên sâu phục vụ nghiệp vụ cá nhân hoặc chia sẻ nội bộ.</li>
+                    </ul>
+                </section>
+
+                <!-- Part 3: Quotas & Credit Costs -->
+                <section class="content-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-calculator"></i> 3. Cơ chế Định mức Credit & Chi phí</h2>
+                        <div class="section-badge solution">Vận hành</div>
+                    </div>
+                    <p>
+                        Để giải quyết bài toán lãng phí tài nguyên, MISA OneAI thiết lập lớp quản trị định mức <strong>Credit</strong> cực kỳ chặt chẽ:
+                    </p>
+                    <table class="spec-table">
+                        <thead>
+                            <tr>
+                                <th>Nhóm Mô Hình Chat</th>
+                                <th>Mẫu Model Cụ Thể</th>
+                                <th>Chi Phí Credit (Lượt hỏi)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>MISA AI</strong></td>
+                                <td>MISA AI 1.0 / 1.0 Plus</td>
+                                <td>0.2 – 0.4 credit</td>
+                            </tr>
+                            <tr>
+                                <td><strong>OpenAI</strong></td>
+                                <td>GPT 5.1 / 5.2 / o3 / o3 Pro</td>
+                                <td>2.7 – 23.2 credit</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Google Gemini</strong></td>
+                                <td>Gemini 2.5 Flash / 3.1 Pro</td>
+                                <td>2.2 – 5.0 credit</td>
+                            </tr>
+                            <tr>
+                                <td><strong>DeepSeek</strong></td>
+                                <td>DeepSeek V3.2-Exp / Think</td>
+                                <td>0.3 – 0.8 credit</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Anthropic Claude</strong></td>
+                                <td>Claude Haiku 4.5 / Sonnet 4.1</td>
+                                <td>2.1 – 40.0 credit</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="font-size: 0.9rem; color: #718096; font-style: italic;">* Bảng chi phí credit thực tế có thể thay đổi tùy thuộc vào tỷ giá quy đổi tài nguyên và nhà cung cấp API của MISA.</p>
+                </section>
+
+                <!-- Part 4: Security & Strategy -->
+                <section class="content-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-shield-halved"></i> 4. An toàn thông tin & Chủ quyền Dữ liệu</h2>
+                    </div>
+                    <p>
+                        <strong>Safety Gateway & Phân quyền:</strong> Lịch sử chat được giữ bảo mật tuyệt đối giữa các nhân viên. Hệ thống tự động mã hóa dữ liệu nhạy cảm (tên công ty, số điện thoại, email) trước khi gửi tới API quốc tế.
+                    </p>
+                    <p style="margin-top: 10px;">
+                        <strong>Data Sovereignty (Chủ quyền dữ liệu):</strong> Đối với các cơ quan hành chính công hoặc doanh nghiệp đặc thù, MISA nhấn mạnh hạ tầng dữ liệu và mô hình <strong>MISA AI được vận hành trên hạ tầng GPU đặt hoàn toàn tại Việt Nam</strong>, đáp ứng tuyệt đối các quy định kiểm soát dữ liệu trong nước.
+                    </p>
+                </section>
+
+                <!-- Part 5: Strengths & Weaknesses -->
+                <section class="content-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-chart-pie"></i> 5. Đánh giá ưu nhược điểm (BA Perspective)</h2>
+                    </div>
+                    <ul style="margin-left: 20px; line-height: 1.8;">
+                        <li><strong>Điểm mạnh:</strong> Giải quyết triệt để bài toán phân bổ tài khoản AI tự phát, kiểm soát chi phí qua hạn mức credit phòng ban, có báo cáo trực quan biến động sử dụng và đảm bảo an toàn thông tin trong nước với MISA AI.</li>
+                        <li><strong>Điểm yếu:</strong> Mô hình quy đổi credit phức tạp làm doanh nghiệp khó lập ngân sách cố định nếu nhân viên sử dụng quá nhiều model đắt tiền (Claude Sonnet 4.1 tốn tới 40 credits/lượt). Có sự lệch pha cập nhật giữa tài liệu hướng dẫn sử dụng và thực tế nâng cấp các dòng LLMs mới.</li>
+                    </ul>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Nguyễn Nhật Hải | Business Analyst Portfolio</p>
+        </div>
+    </footer>
+</body>
+</html>

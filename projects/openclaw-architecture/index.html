@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenClaw Architecture & Stateful Agent Gateway | Nguyễn Nhật Hải</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        @media (max-width: 992px) {
+            .showcase-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .sidebar {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+        .tech-badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .tech-badge {
+            padding: 6px 12px;
+            background: rgba(139, 92, 246, 0.08);
+            border: 1px solid rgba(139, 92, 246, 0.15);
+            color: var(--accent);
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+        .download-card {
+            background: var(--accent-soft);
+            border-left: 5px solid var(--accent);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+        .flow-diagram {
+            background: #f8fafc;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-family: monospace;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: #334155;
+        }
+    </style>
+</head>
+<body class="theme-ai">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="nav-logo"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+            <div class="nav-links">
+                <a href="../../index.html">Home</a>
+                <a href="#overview" class="active">AI Research</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Header -->
+        <header class="page-header">
+            <h1 style="font-size: clamp(2rem, 4vw, 3rem);"><i class="fas fa-network-wired"></i> OpenClaw Architecture</h1>
+            <p class="subtitle">A structural investigation of OpenClaw stateful multi-channel agent gateway and its Rust-based IronClaw counterpart</p>
+        </header>
+
+        <div class="showcase-grid">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="glass-card">
+                    <h3 style="margin-bottom: 15px;"><i class="fas fa-info-circle"></i> Research Specs</h3>
+                    
+                    <div class="tech-badge-container">
+                        <span class="tech-badge">Node.js + TS</span>
+                        <span class="tech-badge">Rust (IronClaw)</span>
+                        <span class="tech-badge">Stateful Gateway</span>
+                        <span class="tech-badge">JSONL Transcripts</span>
+                        <span class="tech-badge">Compaction Engine</span>
+                    </div>
+
+                    <div class="download-card">
+                        <h4 style="margin-bottom: 10px; color: #1a202c;"><i class="fas fa-file-invoice"></i> Read Technical Doc</h4>
+                        <p style="font-size: 0.9rem; color: #4a5568; margin-bottom: 15px;">Xem bản đặc tả in-browser dưới dạng PDF hoặc tải file tài liệu Word gốc.</p>
+                        <a href="../OpenClawArchitecture.pdf" target="_blank" class="btn btn-primary btn-small" style="width: 100%; margin-bottom: 8px; justify-content: center;">
+                            <i class="fas fa-file-pdf"></i> Xem Bản PDF (Xem Nhanh)
+                        </a>
+                        <a href="../OpenClawArchitecture.docx" download class="btn btn-outline btn-small" style="width: 100%; justify-content: center; border-color: rgba(0,0,0,0.15); color: #333;">
+                            <i class="fas fa-file-word"></i> Download DOCX
+                        </a>
+                    </div>
+
+                    <div style="font-size: 0.9rem; color: #718096; line-height: 1.5;">
+                        <p><strong>System Category:</strong> Stateful AI Agent Multi-Channel Orchestrator.</p>
+                        <p style="margin-top: 8px;"><strong>Core Technologies:</strong> TypeScript/Node.js, Rust (re-impl).</p>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="showcase-content">
+                <!-- Part 1: Gateway-Centric Architecture -->
+                <section class="content-section" id="overview">
+                    <div class="section-header">
+                        <h2><i class="fas fa-arrows-spin"></i> 1. Kiến trúc định tâm Gateway (Gateway-Centric)</h2>
+                        <div class="section-badge problem">Giới thiệu</div>
+                    </div>
+                    <p>
+                        OpenClaw là một nền tảng cổng kết nối đa kênh, tự lưu trữ (self-hosted, multi-channel gateway) phục vụ 
+                        điều phối các trợ lý AI ảo (AI Agents). Trái tim của toàn bộ hệ thống là một 
+                        <strong>Gateway process chạy lâu dài (stateful)</strong>, đóng vai trò là "source of truth" duy nhất để quản trị 
+                        phiên giao tiếp (sessions), điều phối (routing) và liên kết kênh.
+                    </p>
+                    <p style="margin-top: 10px;">
+                        Tất cả các giao diện tương tác người dùng như CLI, web dashboard, macOS app hay các kênh chat bên ngoài 
+                        (WhatsApp, Telegram, Discord, iMessage) không tự lưu trữ trạng thái của agent, mà đều kết nối và trao đổi 
+                        dữ liệu trực tiếp thông qua Gateway trung tâm này. Thiết kế này biến OpenClaw thành một <strong>stateful runtime platform</strong> 
+                        bền bỉ thay vì là một ứng dụng chat thông thường.
+                    </p>
+                </section>
+
+                <!-- Part 2: Session & Memory Compaction -->
+                <section class="content-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-database"></i> 2. Cơ chế Lưu trữ Phiên & Nén ngữ cảnh (Compaction)</h2>
+                        <div class="section-badge solution">Trục kiến trúc</div>
+                    </div>
+                    <p>
+                        Trục vận hành chính giúp duy trì tính liên tục (agent continuity) của OpenClaw nằm ở cơ chế phân tách và quản lý bộ nhớ:
+                    </p>
+                    
+                    <div class="flow-diagram">
+┌─────────────────────────────────────────────────────────────┐
+│                       SESSION ENGINE                        │
+├──────────────────────────────┬──────────────────────────────┤
+│  metadata: sessions.json     │  transcripts: *.jsonl        │
+│  - Trạng thái phiên          │  - Ghi nhật ký cuộc gọi      │
+│  - Cấu hình kênh liên kết    │  - Ghi tuần tự (Append-only) │
+└──────────────────────────────┴──────────────────────────────┘
+                               │
+                               ▼
+┌─────────────────────────────────────────────────────────────┐
+│                      COMPACTION ENGINE                      │
+│  - Quét dung lượng Token trần (Context window limits)       │
+│  - Tóm tắt và lưu trữ ngữ cảnh cũ (Pre-compaction flush)    │
+│  - Bổ sung bộ nhớ dài hạn qua truy xuất ngữ nghĩa (Vector)  │
+└─────────────────────────────────────────────────────────────┘
+                    </div>
+
+                    <p style="margin-top: 10px;">
+                        Hệ thống tách biệt rõ ràng giữa lớp siêu dữ liệu (`sessions.json`) và lớp hội thoại lịch sử 
+                        (ghi tuần tự dạng append-only trong các tệp `.jsonl`). Khi kích thước lịch sử chạm ngưỡng trần giới hạn của mô hình, 
+                        <strong>Compaction engine</strong> sẽ tự động nén, tóm tắt nội dung cũ để giải phóng ngữ cảnh (prompt pruning), 
+                        đồng thời đồng bộ chúng vào lớp lưu trữ ngữ nghĩa dài hạn (long-term semantic memory).
+                    </p>
+                </section>
+
+                <!-- Part 3: Codebase & Plugins -->
+                <section class="content-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-folder-tree"></i> 3. Tổ chức mã nguồn & Khung mở rộng (Plugins)</h2>
+                        <div class="section-badge solution">Code Quality</div>
+                    </div>
+                    <p>
+                        Mã nguồn OpenClaw được cấu trúc theo mô hình monorepo với các phân khu chức năng độc lập:
+                    </p>
+                    <ul style="margin-top: 10px; margin-left: 20px; line-height: 1.8;">
+                        <li><strong>`src/` (Core runtime):</strong> Điều phối logic agent, quản trị session, giao tiếp CLI/Gateway và nạp thư viện bootstrap.</li>
+                        <li><strong>`extensions/` (Adapters):</strong> Chứa các kênh kết nối bên thứ ba (Discord, WhatsApp...) giúp cô lập adapter khỏi lõi nghiệp vụ.</li>
+                        <li><strong>`skills/` (Model Guidance):</strong> Định nghĩa các hướng dẫn nâng cao để mô hình tự nhận biết cần gọi tool nào và gọi như thế nào.</li>
+                    </ul>
+                    <p style="margin-top: 10px;">
+                        Khung mở rộng (Plugin API) của OpenClaw cực kỳ mạnh mẽ, không chỉ cho phép bổ sung thêm tool nghiệp vụ mới mà còn 
+                        hỗ trợ can thiệp sâu vào vòng đời hội thoại: chèn thêm hooks lọc tin nhắn, bổ sung CLI commands, mở rộng API routes, 
+                        và điều phối phương án dự phòng khi mô hình AI lỗi (Provider failover logic).
+                    </p>
+                </section>
+
+                <!-- Part 4: Rust-based IronClaw -->
+                <section class="content-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-bolt"></i> 4. IronClaw – Tái triển khai hệ thống bằng Rust</h2>
+                    </div>
+                    <p>
+                        Bên cạnh phiên bản gốc chạy Node.js/TypeScript, cộng đồng phát triển cũng công bố dự án <strong>IronClaw</strong>. 
+                        Đây không phải là một plugin hay lớp bọc ngoài, mà là một **bản làm lại hoàn chỉnh bằng Rust** lấy cảm hứng trực tiếp 
+                        từ OpenClaw.
+                    </p>
+                    <p style="margin-top: 10px;">
+                        IronClaw hướng tới mục tiêu tối thượng là tối ưu hóa tốc độ xử lý của Gateway trung tâm, giảm thiểu rò rỉ bộ nhớ, 
+                        tận dụng lợi thế kiểm soát an toàn luồng dữ liệu (memory safety) và cơ chế xử lý đồng thời cực mạnh của Rust để 
+                        phục vụ các mô hình chatbot/agent chạy cục bộ (local models) có tần suất truy vấn siêu cao trong doanh nghiệp.
+                    </p>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Nguyễn Nhật Hải | Business Analyst Portfolio</p>
+        </div>
+    </footer>
+</body>
+</html>

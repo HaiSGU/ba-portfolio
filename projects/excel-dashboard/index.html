@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel Dashboard Showcase | Nguyễn Nhật Hải</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        @media (max-width: 992px) {
+            .showcase-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .sidebar {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+        .formula-container {
+            background: #f1f5f9;
+            color: #0f172a;
+            padding: 16px;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            border-left: 5px solid var(--accent);
+            font-weight: 700;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-size: 0.95rem;
+        }
+        .tech-badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .tech-badge {
+            padding: 6px 12px;
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.15);
+            color: var(--accent);
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+        .download-card {
+            background: var(--accent-soft);
+            border-left: 5px solid var(--accent);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+        .sheet-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 10px;
+        }
+        .tab-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            background: white;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: #475569;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body class="theme-excel">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="nav-logo"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+            <div class="nav-links">
+                <a href="../../index.html">Home</a>
+                <a href="#overview" class="active">Showcase Notebook</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <header class="page-header" style="background: linear-gradient(135deg, var(--accent) 0%, #059669 100%);">
+            <h1 style="font-size: clamp(2rem, 4vw, 3rem);"><i class="fas fa-file-excel"></i> Excel Demographics & Sales Dashboard</h1>
+            <p class="subtitle">An End-to-End Excel Solution for Data Cleaning, Feature Engineering, and Business Intelligence</p>
+        </header>
+
+        <div class="showcase-grid">
+            <!-- Sidebar: Specs & Downloads -->
+            <aside class="sidebar">
+                <div class="glass-card">
+                    <h3 style="margin-bottom: 15px;"><i class="fas fa-info-circle"></i> Project Specs</h3>
+                    
+                    <div class="tech-badge-container">
+                        <span class="tech-badge">MS Excel</span>
+                        <span class="tech-badge">Data Cleansing</span>
+                        <span class="tech-badge">Pivot Tables</span>
+                        <span class="tech-badge">Dynamic Slicers</span>
+                        <span class="tech-badge">Logic Formulas</span>
+                    </div>
+
+                    <div class="download-card">
+                        <h4 style="margin-bottom: 10px; color: #1a202c;"><i class="fas fa-download"></i> Get Workbooks</h4>
+                        <p style="font-size: 0.9rem; color: #4a5568; margin-bottom: 15px;">Preview spreadsheets directly in-browser or download the original Excel files.</p>
+                        
+                        <p style="font-size: 0.85rem; color: #4a5568; margin-bottom: 6px;"><strong>1. Sales Dataset.xlsx (208KB):</strong></p>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 12px;">
+                            <a href="../../pages/xlsx-viewer.html?file=projects/Excel%20Project%20Dataset.xlsx" target="_blank" class="btn btn-primary btn-small" style="justify-content: center; font-size: 0.8rem; padding: 6px 8px;">
+                                <i class="fas fa-eye"></i> View Preview
+                            </a>
+                            <a href="../Excel%20Project%20Dataset.xlsx" download class="btn btn-outline btn-small" style="justify-content: center; font-size: 0.8rem; padding: 6px 8px; border-color: rgba(0,0,0,0.15); color: #333;">
+                                <i class="fas fa-download"></i> Download
+                            </a>
+                        </div>
+
+                        <p style="font-size: 0.85rem; color: #4a5568; margin-bottom: 6px;"><strong>2. Presidents Cleaning.xlsx (14KB):</strong></p>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px;">
+                            <a href="../../pages/xlsx-viewer.html?file=projects/Data%20Cleaning%20Excel.xlsx" target="_blank" class="btn btn-primary btn-small" style="justify-content: center; font-size: 0.8rem; padding: 6px 8px;">
+                                <i class="fas fa-eye"></i> View Preview
+                            </a>
+                            <a href="../Data%20Cleaning%20Excel.xlsx" download class="btn btn-outline btn-small" style="justify-content: center; font-size: 0.8rem; padding: 6px 8px; border-color: rgba(0,0,0,0.15); color: #333;">
+                                <i class="fas fa-download"></i> Download
+                            </a>
+                        </div>
+                    </div>
+
+                    <div style="font-size: 0.9rem; color: #718096; line-height: 1.5;">
+                        <p><strong>Security:</strong> 100% Macro-Free workbook utilizing native Excel calculations to guarantee safety.</p>
+                        <p style="margin-top: 8px;"><strong>Visual Theme:</strong> Customized HSL emerald palettes (no default Excel styling).</p>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="showcase-content">
+                <!-- Part 1: Data Cleansing -->
+                <section class="content-section" id="overview">
+                    <div class="section-header">
+                        <h2><i class="fas fa-broom"></i> 1. Raw Data Cleansing & Normalization</h2>
+                        <div class="section-badge problem" style="background: #e6f4ea; color: #137333;">Phase 1</div>
+                    </div>
+                    <p>
+                        Web-scraped database dumps are notoriously irregular. In this phase, I targeted two datasets: first, a dirty US Presidents list, and second, a raw consumer demographics dataset of 1,000 retail buyers.
+                    </p>
+                    <p style="margin-top: 10px;"><strong>Cleansing Protocols Executed:</strong></p>
+                    <ul>
+                        <li><strong>Whitespace Stripping:</strong> Used search-and-replace to strip double spaces (e.g. standardizing `Democratic-  Republican` to `Democratic-Republican`) and used `TRIM` to remove padding.</li>
+                        <li><strong>Abbreviation Expansion:</strong> Standardized coding values across all rows to maximize readability in legends (expanded `M`/`S` to `Married`/`Single` and `F`/`M` to `Female`/`Male`).</li>
+                        <li><strong>Financial Formatting:</strong> Re-cast presidential salary text fields into numeric values and formatted as standard Currency.</li>
+                    </ul>
+                </section>
+
+                <!-- Part 2: Feature Engineering -->
+                <section class="content-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-code"></i> 2. Demographics Feature Engineering</h2>
+                        <div class="section-badge solution" style="background: #e6f4ea; color: #137333;">Phase 2</div>
+                    </div>
+                    <p>
+                        Individual age values (e.g., 42, 43, 60) are highly fragmented and generate clunky charts. To construct a clear profile of customer demographics, I engineered a dynamic **`Age Bracket`** classification column.
+                    </p>
+                    <p style="margin-top: 10px;">
+                        I used a nested logical **`IF`** statement to automatically group consumers into three primary strategic corporate demographics:
+                    </p>
+
+                    <div class="formula-container">
+                        =IF(L2 > 54, "Old", IF(L2 >= 31, "Middle Age", IF(L2 < 31, "Adolescent", "Invalid")))
+                    </div>
+
+                    <p style="margin-top: 10px; font-size: 0.95rem; color: #4a5568;">
+                        This parses and groups age numbers dynamically:
+                        <br>&bull; **Adolescent:** Age under 31
+                        <br>&bull; **Middle Age:** Age between 31 and 54
+                        <br>&bull; **Old:** Age 55 and above
+                    </p>
+                </section>
+
+                <!-- Part 3: BI Dashboard Architecture -->
+                <section class="content-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-desktop"></i> 3. Dynamic BI Dashboard Architecture</h2>
+                        <div class="section-badge solution" style="background: #e6f4ea; color: #137333;">Phase 3</div>
+                    </div>
+                    <p>
+                        To build a highly responsive executive reporting cockpit, I structured the workbook into a modular tab system:
+                    </p>
+
+                    <div class="sheet-card">
+                        <span class="tab-tag"><i class="fas fa-database"></i> bike_buyers</span>
+                        <span class="tab-tag"><i class="fas fa-table"></i> Working Sheet</span>
+                        <span class="tab-tag"><i class="fas fa-chart-line"></i> Pivot Table</span>
+                        <span class="tab-tag"><i class="fas fa-desktop"></i> Dashboard</span>
+                    </div>
+
+                    <p style="margin-top: 15px;"><strong>Multi-Dimensional Analysis:</strong></p>
+                    <ul>
+                        <li><strong>Income Splits:</strong> Pivot table measuring average earnings of customers who bought bikes vs non-buyers, split by gender (revealing that positive purchases are highly correlated with higher incomes).</li>
+                        <li><strong>Commute Utility:</strong> Pivot table tracking customer travel distances, revealing that short-commute customers (0-1 miles) purchase bikes at the highest frequency.</li>
+                        <li><strong>Demographics Mix:</strong> Pivot table aggregating purchases by our newly engineered `Age Brackets` (Adolescent, Middle Age, Old).</li>
+                    </ul>
+
+                    <p style="margin-top: 15px;"><strong>Executive Slicers Synchronization:</strong></p>
+                    <p>
+                        To give management instantaneous filter controls, I inserted interactive **Slicers (Marital Status, Region, Education)**. By establishing **Report Connections**, a single click on any slicer dynamically filters all three pivot tables and updates all dashboard charts in real-time.
+                    </p>
+                </section>
+
+                <!-- Part 4: Consumer Intelligence -->
+                <section class="content-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-brain"></i> 4. Key Demographics Findings</h2>
+                    </div>
+                    <ul>
+                        <li><strong>Core Consumer Profile:</strong> Our highest performing segment comprises **Middle-aged professionals** with an average income above $50,000.</li>
+                        <li><strong>Proximity Utility:</strong> Commute distance is a massive purchasing factor. Proximity of **0-1 miles** accounts for the largest purchase share; ad spend on audiences commuting more than 5 miles should be heavily minimized.</li>
+                        <li><strong>Strategic Ad spend Alignment:</strong> Recommend shifting visual ad spend away from Adolescents and Older populations, funneling capital exclusively to middle-aged professional segments.</li>
+                    </ul>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Nguyễn Nhật Hải | Technical Portfolio Showcase</p>
+        </div>
+    </footer>
+</body>
+</html>

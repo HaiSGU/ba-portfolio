@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Layoffs Analysis Showcase | Nguyễn Nhật Hải</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        @media (max-width: 992px) {
+            .showcase-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .sidebar {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+        .code-block {
+            background: #1e1e2e;
+            color: #cdd6f4;
+            padding: 18px;
+            border-radius: 10px;
+            font-family: 'Courier New', Courier, monospace;
+            overflow-x: auto;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            margin: 15px 0;
+            font-size: 0.95rem;
+        }
+        .tech-badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .tech-badge {
+            padding: 6px 12px;
+            background: rgba(79, 70, 229, 0.08);
+            border: 1px solid rgba(79, 70, 229, 0.15);
+            color: var(--accent);
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+        .download-card {
+            background: var(--accent-soft);
+            border-left: 5px solid var(--accent);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+    </style>
+</head>
+<body class="theme-sql">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="nav-logo"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+            <div class="nav-links">
+                <a href="../../index.html">Home</a>
+                <a href="#overview" class="active">Showcase Notebook</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <header class="page-header">
+            <h1 style="font-size: clamp(2rem, 4vw, 3rem);"><i class="fas fa-database"></i> SQL World Layoffs Cleaning & EDA</h1>
+            <p class="subtitle">A complete technical database notebook executing robust data cleansing and advanced exploratory aggregations</p>
+        </header>
+
+        <div class="showcase-grid">
+            <!-- Sidebar: Metadata & Downloads -->
+            <aside class="sidebar">
+                <div class="glass-card">
+                    <h3 style="margin-bottom: 15px;"><i class="fas fa-info-circle"></i> Project Specs</h3>
+                    
+                    <div class="tech-badge-container">
+                        <span class="tech-badge">MySQL / T-SQL</span>
+                        <span class="tech-badge">Data ETL</span>
+                        <span class="tech-badge">Deduplication</span>
+                        <span class="tech-badge">Window Functions</span>
+                        <span class="tech-badge">CTEs</span>
+                    </div>
+
+                    <div class="download-card">
+                        <h4 style="margin-bottom: 10px; color: #1a202c;"><i class="fas fa-download"></i> Get SQL Files</h4>
+                        <p style="font-size: 0.9rem; color: #4a5568; margin-bottom: 15px;">View code directly in-browser or download the raw SQL files.</p>
+                        
+                        <p style="font-size: 0.85rem; color: #4a5568; margin-bottom: 6px;"><strong>1. DataCleaning.sql (8KB):</strong></p>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 12px;">
+                            <a href="../../pages/sql-viewer.html?file=projects/DataCleaning.sql" target="_blank" class="btn btn-primary btn-small" style="justify-content: center; font-size: 0.8rem; padding: 6px 8px;">
+                                <i class="fas fa-code"></i> View Code
+                            </a>
+                            <a href="../DataCleaning.sql" download class="btn btn-outline btn-small" style="justify-content: center; font-size: 0.8rem; padding: 6px 8px; border-color: rgba(0,0,0,0.15); color: #333;">
+                                <i class="fas fa-download"></i> Download
+                            </a>
+                        </div>
+
+                        <p style="font-size: 0.85rem; color: #4a5568; margin-bottom: 6px;"><strong>2. EDA.sql (4KB):</strong></p>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px;">
+                            <a href="../../pages/sql-viewer.html?file=projects/EDA.sql" target="_blank" class="btn btn-primary btn-small" style="justify-content: center; font-size: 0.8rem; padding: 6px 8px;">
+                                <i class="fas fa-code"></i> View Code
+                            </a>
+                            <a href="../EDA.sql" download class="btn btn-outline btn-small" style="justify-content: center; font-size: 0.8rem; padding: 6px 8px; border-color: rgba(0,0,0,0.15); color: #333;">
+                                <i class="fas fa-download"></i> Download
+                            </a>
+                        </div>
+                    </div>
+
+                    <div style="font-size: 0.9rem; color: #718096; line-height: 1.5;">
+                        <p><strong>Dataset Source:</strong> Web-scraped global layoffs record database (Kaggle).</p>
+                        <p style="margin-top: 8px;"><strong>Complexity Level:</strong> Intermediate / Advanced SQL.</p>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="showcase-content">
+                <!-- Part 1: Staging & Deduplication -->
+                <section class="content-section" id="overview">
+                    <div class="section-header">
+                        <h2><i class="fas fa-shield-halved"></i> 1. Secure Staging & Row Deduplication</h2>
+                        <div class="section-badge problem">Phase 1</div>
+                    </div>
+                    <p>
+                        To safeguard the raw imported database, I created a safe staging environment `layoffs_staging`. 
+                        To execute 100% accurate deduplication without database key collations, I mapped rows using a 
+                        `ROW_NUMBER() OVER` partition logic across all columns. 
+                    </p>
+                    <p style="margin-top: 10px;">
+                        Because standard database engines do not support direct `DELETE` operations on complex CTEs, I created a secondary staging schema `layoffs_staging2` adding a helper column `row_num`, inserted the row calculations, deleted duplicate entries, and then dropped the helper:
+                    </p>
+
+                    <div class="code-block">
+<pre><code>-- Safe Deduplication Architecture
+CREATE TABLE `layoffs_staging2` (
+  `company` text, `location` text, `industry` text, `total_laid_off` int,
+  `percentage_laid_off` text, `date` text, `stage` text, `country` text,
+  `funds_raised_millions` int, `row_num` INT
+);
+
+INSERT INTO layoffs_staging2
+SELECT *, ROW_NUMBER() OVER (
+  PARTITION BY company, location, industry, total_laid_off, percentage_laid_off, `date`, stage, country, funds_raised_millions
+) AS row_num 
+FROM layoffs_staging;
+
+-- Hard delete duplicates
+DELETE FROM layoffs_staging2 WHERE row_num >= 2;
+ALTER TABLE layoffs_staging2 DROP COLUMN row_num;</code></pre>
+                    </div>
+                </section>
+
+                <!-- Part 2: Standardization & Type Casting -->
+                <section class="content-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-broom"></i> 2. Categorical Standardization & Type Casting</h2>
+                        <div class="section-badge solution">Phase 2</div>
+                    </div>
+                    <p>
+                        Raw text datasets often suffer from split labels (e.g. having `Crypto Currency`, `CryptoCurrency`, and `Crypto` representing the same sector) and trailing punctuation. I normalized these records, aligned blanks to standard database NULLs, and imputed empty industries by joining the staging table against itself based on corporate matches:
+                    </p>
+
+                    <div class="code-block">
+<pre><code>-- Standardizing labels & Imputing nulls via self-join
+UPDATE layoffs_staging2 SET industry = 'Crypto' WHERE industry IN ('Crypto Currency', 'CryptoCurrency');
+UPDATE layoffs_staging2 SET country = TRIM(TRAILING '.' FROM country);
+
+UPDATE layoffs_staging2 t1
+JOIN layoffs_staging2 t2 ON t1.company = t2.company
+SET t1.industry = t2.industry
+WHERE t1.industry IS NULL AND t2.industry IS NOT NULL;</code></pre>
+                    </div>
+
+                    <p style="margin-top: 15px;">
+                        <strong>Chronological Type Casting:</strong> String date variables block sorting or interval operations. I parsed string dates using `STR_TO_DATE` and modified the table column format to standard date values:
+                    </p>
+
+                    <div class="code-block">
+<pre><code>-- Parse date string and alter column structure to proper Date type
+UPDATE layoffs_staging2 SET `date` = STR_TO_DATE(`date`, '%m/%d/%Y');
+ALTER TABLE layoffs_staging2 MODIFY COLUMN `date` DATE;</code></pre>
+                    </div>
+                </section>
+
+                <!-- Part 3: Exploratory Analytics -->
+                <section class="content-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-chart-line"></i> 3. Advanced CTE exploratory Analytics</h2>
+                        <div class="section-badge solution">Phase 3</div>
+                    </div>
+                    <p>
+                        With the database clean and indexed, I executed advanced analytical queries using nested **Common Table Expressions (CTEs)** and **Window Functions** to uncover macro layoffs behaviors:
+                    </p>
+
+                    <h4 style="margin-top: 20px; color: var(--accent);"><i class="fas fa-chart-bar"></i> Query A: Rolling Monthly Layoffs Total</h4>
+                    <p style="font-size: 0.95rem; color: #4a5568;">Reveals the overall chronological slope of global layoffs by accumulating month-over-month sums.</p>
+                    <div class="code-block">
+<pre><code>WITH DATE_CTE AS (
+    SELECT SUBSTRING(date,1,7) as dates, SUM(total_laid_off) AS total_laid_off
+    FROM layoffs_staging2
+    GROUP BY dates ORDER BY dates ASC
+)
+SELECT dates, SUM(total_laid_off) OVER (ORDER BY dates ASC) as rolling_total
+FROM DATE_CTE ORDER BY dates ASC;</code></pre>
+                    </div>
+
+                    <h4 style="margin-top: 20px; color: var(--accent);"><i class="fas fa-crown"></i> Query B: Top 3 Corporate Layoffs Ranks Per Year</h4>
+                    <p style="font-size: 0.95rem; color: #4a5568;">Utilizes double CTE layers and the `DENSE_RANK()` partition window to rank top laid-off companies within their respective calendar years.</p>
+                    <div class="code-block">
+<pre><code>WITH Company_Year AS (
+    SELECT company, YEAR(date) AS years, SUM(total_laid_off) AS total_laid_off
+    FROM layoffs_staging2
+    GROUP BY company, YEAR(date)
+), Company_Year_Rank AS (
+    SELECT company, years, total_laid_off, 
+           DENSE_RANK() OVER (PARTITION BY years ORDER BY total_laid_off DESC) AS ranking
+    FROM Company_Year
+)
+SELECT company, years, total_laid_off, ranking
+FROM Company_Year_Rank
+WHERE ranking <= 3 AND years IS NOT NULL
+ORDER BY years ASC, total_laid_off DESC;</code></pre>
+                    </div>
+                </section>
+
+                <!-- Part 4: Business Insights -->
+                <section class="content-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-brain"></i> 4. Key Macro Insights</h2>
+                    </div>
+                    <ul>
+                        <li><strong>Macro Volume surge:</strong> The timeline reveals a significant layoff surge starting in Q3 2022, peaking in Q1 2023, primarily concentrated in tech, retail, and consumer sectors.</li>
+                        <li><strong>Geographical Footprint:</strong> The United States tech clusters carried over 75% of overall laid-off volume, dominated by hyper-scale enterprise downsizings.</li>
+                        <li><strong>Funding Volatility:</strong> Companies raising massive venture capital (e.g. Quibi raising $2B+) collapsed completely, proving that high capital cushions do not substitute for product-market fit or cashflow sustainability.</li>
+                    </ul>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Nguyễn Nhật Hải | Technical Portfolio Showcase</p>
+        </div>
+    </footer>
+</body>
+</html>

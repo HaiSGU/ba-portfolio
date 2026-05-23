@@ -7,7 +7,7 @@
     <!-- Modern FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- HOME PAGE STYLES -->
-    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/home.css?v=3.5">
 </head>
 <body>
     <!-- Dynamic Background Orbs -->
@@ -16,10 +16,23 @@
         <div class="orb orb-2"></div>
     </div>
 
-    <div class="container">
-        <!-- Hero Section -->
-        <header class="hero">
-            <div class="hero-grid">
+    <!-- Hero Section (Full Width) -->
+    <header class="hero">
+        <!-- Fluid Wave SVG Layers -->
+        <svg class="hero-wave w-back" viewBox="0 0 1440 200" preserveAspectRatio="none">
+            <path d="M0,120 C240,160 480,40 720,100 C960,160 1200,80 1440,120 L1440,200 L0,200 Z"></path>
+        </svg>
+        <svg class="hero-wave w-mid" viewBox="0 0 1440 200" preserveAspectRatio="none">
+            <path d="M0,100 C320,60 640,150 960,90 C1280,30 1360,110 1440,80 L1440,200 L0,200 Z"></path>
+        </svg>
+        <svg class="hero-wave w-near" viewBox="0 0 1440 200" preserveAspectRatio="none">
+            <path d="M0,130 C360,90 720,150 1080,100 C1260,75 1360,115 1440,95 L1440,200 L0,200 Z"></path>
+        </svg>
+
+        <!-- Centered Container inside Full-Width Hero -->
+        <div class="container">
+            <!-- Content Grid Overlay -->
+            <div class="hero-grid" style="position: relative; z-index: 10; width: 100%;">
                 <div class="hero-content">
                     <div class="hero-badge">
                         <i class="fas fa-circle-check"></i> Available for opportunities
@@ -40,7 +53,7 @@
                         <a href="#contact" class="btn btn-primary" onclick="activateTab('contact')">
                             Let's Talk <i class="fas fa-arrow-right"></i>
                         </a>
-                        <a id="profile-github" href="#" target="_blank" class="btn btn-outline">
+                        <a id="profile-github" href="#" target="_blank" class="btn btn-outline" style="border-color: rgba(255,255,255,0.4); color: white;">
                             <i class="fab fa-github"></i> GitHub
                         </a>
                     </div>
@@ -67,8 +80,11 @@
                     </p>
                 </div>
             </div>
-        </header>
+        </div>
+    </header>
 
+    <!-- Main Content Container -->
+    <div class="container">
         <!-- Navigation Toolbar -->
         <div class="toolbar-container">
             <div class="toolbar">
@@ -81,6 +97,9 @@
                     </button>
                     <button class="tab" onclick="activateTab('certificates')" data-target="certificates">
                         <i class="fas fa-certificate"></i> Certificates
+                    </button>
+                    <button class="tab" onclick="activateTab('ai-research')" data-target="ai-research">
+                        <i class="fas fa-brain"></i> AI Research
                     </button>
                     <button class="tab" onclick="activateTab('contact')" data-target="contact">
                         <i class="fas fa-envelope"></i> Contact
@@ -105,6 +124,20 @@
             <!-- DYNAMIC CONTENT GOES HERE -->
             <div id="case-studies-container" class="projects-grid filterable-container"></div>
         </main>
+
+        <!-- Section: AI Research -->
+        <main id="ai-research" class="section">
+            <div style="margin-bottom: 2rem;">
+                <h2>AI Research &amp; Architectures</h2>
+                <p class="hero-subtitle" style="font-size: 1rem; max-width: 800px;">
+                    Technical research, architectural deep dives, and business analyst analyses on cutting-edge enterprise AI systems and stateful agent gateways.
+                </p>
+            </div>
+            <!-- DYNAMIC CONTENT GOES HERE -->
+            <div id="ai-research-container" class="list-grid filterable-container"></div>
+        </main>
+
+
 
         <!-- Section: Learn -->
         <main id="learn" class="section">
@@ -197,9 +230,9 @@
             document.getElementById('contact-btn').href = PORTFOLIO_DATA.profile.linkedin;
             document.getElementById('contact-email').href = "mailto:" + PORTFOLIO_DATA.profile.email;
 
-            // Render Case Studies
-            const caseStudiesHtml = PORTFOLIO_DATA.caseStudies.map(item => `
-                <article class="glass-card project-card filter-item" data-keywords="${item.keywords}" style="cursor: pointer;" onclick="window.location.href='${item.link}'">
+            // Render Case Studies (staggered delay added)
+            const caseStudiesHtml = PORTFOLIO_DATA.caseStudies.map((item, i) => `
+                <article class="glass-card project-card filter-item" data-keywords="${item.keywords}" style="cursor: pointer; animation-delay: ${i * 0.08}s;" onclick="window.location.href='${item.link}'">
                     <div style="position: relative; overflow: hidden; height: 220px;">
                         <img src="${item.image}" alt="${item.title}" class="project-image" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
@@ -216,9 +249,10 @@
             `).join('');
             document.getElementById('case-studies-container').innerHTML = caseStudiesHtml;
 
-            // Render BA Concepts
-            const conceptsHtml = PORTFOLIO_DATA.learnResources.concepts.map(item => `
-                <div class="glass-card list-item filter-item" data-keywords="${item.keywords}">
+
+            // Render BA Concepts (staggered delay added)
+            const conceptsHtml = PORTFOLIO_DATA.learnResources.concepts.map((item, i) => `
+                <div class="glass-card list-item filter-item" data-keywords="${item.keywords}" style="animation-delay: ${i * 0.08}s;">
                     <div class="list-item-content">
                         <h4 class="list-item-title">${item.title}</h4>
                         <p class="list-item-desc">${item.description}</p>
@@ -226,26 +260,27 @@
                             ${item.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
                         </div>
                     </div>
-                    <a href="${item.link}" class="btn btn-outline"><i class="fas fa-book-reader"></i> Read</a>
+                    <a href="${item.link}" target="_blank" class="btn btn-outline"><i class="fas fa-book-reader"></i> Read</a>
                 </div>
             `).join('');
             document.getElementById('learn-concepts-container').innerHTML = conceptsHtml;
 
-            // Render Templates
-            const templatesHtml = PORTFOLIO_DATA.learnResources.templates.map(item => `
-                <div class="glass-card list-item filter-item" data-keywords="${item.keywords}">
+            // Render Templates (staggered delay added)
+            const templatesHtml = PORTFOLIO_DATA.learnResources.templates.map((item, i) => `
+                <div class="glass-card list-item filter-item" data-keywords="${item.keywords}" style="animation-delay: ${i * 0.08}s;">
                     <div class="list-item-content">
                         <h4 class="list-item-title">${item.title}</h4>
                         <p class="list-item-desc">${item.description}</p>
                     </div>
-                    <a href="${item.link}" class="btn btn-outline"><i class="fas ${item.icon}"></i> ${item.btnText}</a>
+                    <a href="${item.link}" target="_blank" class="btn btn-outline"><i class="fas ${item.icon}"></i> ${item.btnText}</a>
                 </div>
             `).join('');
             document.getElementById('learn-templates-container').innerHTML = templatesHtml;
 
-            // Render Certificates
-            const certificatesHtml = PORTFOLIO_DATA.certificates.map(item => `
-                <div class="glass-card list-item filter-item" data-keywords="${item.keywords}">
+
+            // Render Certificates (staggered delay added)
+            const certificatesHtml = PORTFOLIO_DATA.certificates.map((item, i) => `
+                <div class="glass-card list-item filter-item" data-keywords="${item.keywords}" style="animation-delay: ${i * 0.08}s;">
                     <div style="font-size: 2.5rem; color: ${item.color};">
                         <i class="fas ${item.icon}"></i>
                     </div>
@@ -260,10 +295,58 @@
                 </div>
             `).join('');
             document.getElementById('certificates-container').innerHTML = certificatesHtml;
+
+            // Render AI Research (staggered delay added)
+            if (PORTFOLIO_DATA.aiResearch) {
+                const aiResearchHtml = PORTFOLIO_DATA.aiResearch.map((item, i) => `
+                    <div class="glass-card list-item filter-item" data-keywords="${item.keywords}" style="animation-delay: ${i * 0.08}s;">
+                        <div class="list-item-content">
+                            <h4 class="list-item-title">${item.title}</h4>
+                            <p class="list-item-desc">${item.description}</p>
+                            <div class="tags-container" style="margin-top: 0.5rem;">
+                                ${item.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                            </div>
+                        </div>
+                        <a href="${item.link}" class="btn btn-outline"><i class="fas fa-book-open"></i> Read Review</a>
+                    </div>
+                `).join('');
+                document.getElementById('ai-research-container').innerHTML = aiResearchHtml;
+            }
+        }
+
+        // Apply Premium 3D Perspective Tilt on Mousemove
+        function apply3DTilt() {
+            const cards = document.querySelectorAll('.project-card, .glass-card');
+            cards.forEach(card => {
+                // Ignore the background floating card if needed, but apply to active elements
+                card.addEventListener('mousemove', e => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const xc = rect.width / 2;
+                    const yc = rect.height / 2;
+                    const dx = x - xc;
+                    const dy = y - yc;
+                    
+                    // 3D rotation ratios (max 6 degrees for smooth realistic feel)
+                    const rx = -(dy / yc) * 6;
+                    const ry = (dx / xc) * 6;
+                    
+                    card.style.transform = `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-5px) scale(1.015)`;
+                    card.style.boxShadow = `0 20px 40px -10px rgba(37, 99, 235, 0.2)`;
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0) scale(1)';
+                    card.style.boxShadow = '';
+                });
+            });
         }
 
         // Initialize Render
         renderPortfolio();
+        apply3DTilt();
+
 
         // -----------------------------------------------------
         // TAB & SEARCH LOGIC

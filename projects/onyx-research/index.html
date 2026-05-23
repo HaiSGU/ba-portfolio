@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onyx Enterprise AI Platform & Architecture | Nguyễn Nhật Hải</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        @media (max-width: 992px) {
+            .showcase-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .sidebar {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+        .tech-badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .tech-badge {
+            padding: 6px 12px;
+            background: rgba(139, 92, 246, 0.08);
+            border: 1px solid rgba(139, 92, 246, 0.15);
+            color: var(--accent);
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+        .download-card {
+            background: var(--accent-soft);
+            border-left: 5px solid var(--accent);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+        .flow-diagram {
+            background: #f8fafc;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-family: monospace;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: #334155;
+        }
+    </style>
+</head>
+<body class="theme-ai">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="nav-logo"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+            <div class="nav-links">
+                <a href="../../index.html">Home</a>
+                <a href="#overview" class="active">AI Research</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Header -->
+        <header class="page-header">
+            <h1 style="font-size: clamp(2rem, 4vw, 3rem);"><i class="fas fa-server"></i> Onyx GenAI Platform &amp; Architecture</h1>
+            <p class="subtitle">An architectural analysis of Onyx (Danswer) enterprise search engine, container architecture, and compliance frameworks</p>
+        </header>
+
+        <div class="showcase-grid">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="glass-card">
+                    <h3 style="margin-bottom: 15px;"><i class="fas fa-info-circle"></i> Research Specs</h3>
+                    
+                    <div class="tech-badge-container">
+                        <span class="tech-badge">Enterprise Search</span>
+                        <span class="tech-badge">Next.js + FastAPI</span>
+                        <span class="tech-badge">Vespa Vector Search</span>
+                        <span class="tech-badge">40+ Sync Connectors</span>
+                        <span class="tech-badge">Code Interpreter</span>
+                    </div>
+
+                    <div class="download-card">
+                        <h4 style="margin-bottom: 10px; color: #1a202c;"><i class="fas fa-file-invoice"></i> Read Research Docs</h4>
+                        
+                        <p style="font-size: 0.85rem; color: #4a5568; margin-bottom: 6px;"><strong>1. Onyx Core Research:</strong></p>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 12px;">
+                            <a href="../OnyxResearch.pdf" target="_blank" class="btn btn-primary btn-small" style="justify-content: center; font-size: 0.8rem; padding: 6px 8px;">
+                                <i class="fas fa-file-pdf"></i> Xem PDF
+                            </a>
+                            <a href="../OnyxResearch.docx" download class="btn btn-outline btn-small" style="justify-content: center; font-size: 0.8rem; padding: 6px 8px; border-color: rgba(0,0,0,0.15); color: #333;">
+                                <i class="fas fa-file-word"></i> Word
+                            </a>
+                        </div>
+
+                        <p style="font-size: 0.85rem; color: #4a5568; margin-bottom: 6px;"><strong>2. Onyx Feature Set:</strong></p>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 12px;">
+                            <a href="../OnyxFeature.pdf" target="_blank" class="btn btn-primary btn-small" style="justify-content: center; font-size: 0.8rem; padding: 6px 8px;">
+                                <i class="fas fa-file-pdf"></i> Xem PDF
+                            </a>
+                            <a href="../OnyxFeature.docx" download class="btn btn-outline btn-small" style="justify-content: center; font-size: 0.8rem; padding: 6px 8px; border-color: rgba(0,0,0,0.15); color: #333;">
+                                <i class="fas fa-file-word"></i> Word
+                            </a>
+                        </div>
+
+                        <p style="font-size: 0.85rem; color: #4a5568; margin-bottom: 6px;"><strong>3. Onyx Licensing & Compliance:</strong></p>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px;">
+                            <a href="../OnyxLicense.pdf" target="_blank" class="btn btn-primary btn-small" style="justify-content: center; font-size: 0.8rem; padding: 6px 8px;">
+                                <i class="fas fa-file-pdf"></i> Xem PDF
+                            </a>
+                            <a href="../OnyxLicense.docx" download class="btn btn-outline btn-small" style="justify-content: center; font-size: 0.8rem; padding: 6px 8px; border-color: rgba(0,0,0,0.15); color: #333;">
+                                <i class="fas fa-file-word"></i> Word
+                            </a>
+                        </div>
+                    </div>
+
+                    <div style="font-size: 0.9rem; color: #718096; line-height: 1.5;">
+                        <p><strong>System Classification:</strong> Enterprise AI Search Engine (Self-Hosted/Cloud).</p>
+                        <p style="margin-top: 8px;"><strong>License Type:</strong> Open Source & Commercial (Stripe).</p>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="showcase-content">
+                <!-- Part 1: What is Onyx -->
+                <section class="content-section" id="overview">
+                    <div class="section-header">
+                        <h2><i class="fas fa-magnifying-glass-nodes"></i> 1. Onyx (Danswer) là gì?</h2>
+                        <div class="section-badge problem">Giới thiệu</div>
+                    </div>
+                    <p>
+                        Onyx (trước đây là Danswer) là một nền tảng trí tuệ nhân tạo thế hệ mới (GenAI) phục vụ tìm kiếm thông tin 
+                        nội bộ và tích hợp LLMs dành riêng cho doanh nghiệp. Khác với các ứng dụng chatbot thông thường, Onyx đóng vai trò 
+                        như một <strong>hệ thống AI nội bộ tập trung</strong> của toàn bộ tổ chức, kết hợp giữa việc hỏi đáp với LLMs, 
+                        tra cứu tri thức chéo từ hàng chục nguồn dữ liệu, và thực thi mã lệnh tự động.
+                    </p>
+                    <p style="margin-top: 10px;">
+                        Hệ thống hỗ trợ cơ chế tự động đồng bộ quyền truy cập (<strong>Auto Sync Permissions</strong>) từ các nguồn gốc 
+                        như Google Drive, Gmail, Confluence, Slack, Jira... đảm bảo nhân viên chỉ có thể tìm thấy dữ liệu mà họ được phép xem.
+                    </p>
+                </section>
+
+                <!-- Part 2: Key Features -->
+                <section class="content-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-star"></i> 2. Các tính năng cốt lõi vượt trội</h2>
+                        <div class="section-badge solution">Tính năng lõi</div>
+                    </div>
+                    <ul style="margin-left: 20px; line-height: 1.8;">
+                        <li><strong>Code Interpreter (Sandbox Python):</strong> Cho phép mô hình tự động viết và thực thi mã Python trong môi trường ảo biệt lập (sandbox). Dùng để xử lý các phép toán phức tạp, phân tích dữ liệu từ file upload và trực quan hóa sơ đồ.</li>
+                        <li><strong>40+ Persistent Connectors:</strong> Khung kết nối bền bỉ tự động đồng bộ định kỳ dữ liệu từ Drive, Notion, GitHub, Confluence, Jira, HubSpot, Teams... giúp tri thức nội bộ luôn được cập nhật.</li>
+                        <li><strong>Phân quyền Curator & Global Curator:</strong> Thiết lập lớp quản trị trung gian ở cấp phòng ban. Curator có thể quản lý dữ liệu, connectors và trợ lý riêng của nhóm mình mà không cần can thiệp quyền Admin hệ thống.</li>
+                        <li><strong>Deep Research:</strong> Chế độ nghiên cứu sâu tự động thực hiện chuỗi hành động tìm kiếm, đọc hiểu, suy luận đa tầng để tổng hợp thông tin phức tạp (tốn khoảng 10 lần tài nguyên so với chat thường).</li>
+                    </ul>
+                </section>
+
+                <!-- Part 3: Architecture Deep Dive -->
+                <section class="content-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-sitemap"></i> 3. Kiến trúc hệ thống đa tầng (Architecture)</h2>
+                        <div class="section-badge solution">Technical Details</div>
+                    </div>
+                    <p>
+                        Kiến trúc của Onyx được đóng gói dưới dạng tập hợp các container Docker độc lập, phân rã nhiệm vụ rõ ràng:
+                    </p>
+                    
+                    <div class="flow-diagram">
+┌────────────────────────────────────────────────────────┐
+│                   APPLICATION LAYER                    │
+│  - Frontend: Next.js Web Client                        │
+│  - Backend: FastAPI (Python) Web Server                │
+│  - Background Workers: Celery/Celery Beat (Async Jobs) │
+└──────────────────────────┬─────────────────────────────┘
+                           ▼
+┌────────────────────────────────────────────────────────┐
+│                      DATA LAYER                        │
+│  - Postgres: Lưu trữ dữ liệu ứng dụng & trạng thái     │
+│  - Vespa: Lưu trữ vector & Keyword (Hybrid Search)     │
+│  - Redis: Cache lưu trữ đệm tốc độ cao                 │
+│  - MinIO: Lưu trữ đối tượng (S3 compatible)            │
+└────────────────────────────────────────────────────────┘
+                    </div>
+                    
+                    <p style="margin-top: 10px;">
+                        Frontend viết bằng <strong>Next.js</strong> giao tiếp trực tiếp với Core Backend <strong>FastAPI (Python)</strong>. 
+                        Công cụ tìm kiếm hybrid kết hợp giữa từ khóa (lexical) và vector (semantic) được vận hành trên hạ tầng 
+                        <strong>Vespa engine</strong>. File tài liệu nạp lên được lưu trữ tập trung tại <strong>MinIO</strong> (có thể cấu hình trỏ sang AWS S3).
+                    </p>
+                </section>
+
+                <!-- Part 4: Legal & Commercial Compliance -->
+                <section class="content-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-scale-balanced"></i> 4. Pháp lý & Thương mại phần mềm (Compliance)</h2>
+                    </div>
+                    <p>
+                        Onyx phân tách rõ ràng giữa phiên bản Self-Hosted Open-Source (miễn phí) và bản thương mại Enterprise. 
+                        License kích hoạt được quản lý bằng Stripe subscription và xác thực cục bộ (locally validated) bằng chữ ký số, 
+                        hỗ trợ tốt cả trong môi trường mạng nội bộ cô lập (air-gapped environments).
+                    </p>
+                    <p style="margin-top: 10px;">
+                        Khi triển khai thương mại ra toàn cầu, Onyx phải xử lý 4 nhóm compliance pháp lý:
+                    </p>
+                    <ul style="margin-top: 10px; margin-left: 20px; line-height: 1.8;">
+                        <li><strong>Thuế dịch vụ số:</strong> Khai báo thuế VAT chéo biên giới (qua cơ chế EU OSS).</li>
+                        <li><strong>Export controls (Kiểm soát xuất khẩu):</strong> Tuân thủ quy định EAR của Mỹ đối với các công nghệ mã hóa và phần mềm.</li>
+                        <li><strong>Dữ liệu cá nhân (GDPR):</strong> Đóng vai trò là Processor hoặc Controller khi xử lý dữ liệu người dùng EU, áp dụng điều khoản truyền dữ liệu SCCs.</li>
+                    </ul>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Nguyễn Nhật Hải | Business Analyst Portfolio</p>
+        </div>
+    </footer>
+</body>
+</html>

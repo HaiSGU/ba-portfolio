@@ -40,6 +40,31 @@ body.theme-mow {
     --accent-shadow: rgba(34, 197, 94, 0.22);
 }
 
+body.theme-sql {
+    --accent: #4f46e5;
+    --accent-strong: #4338ca;
+    --accent2: #06b6d4;
+    --accent-soft: #eef2ff;
+    --accent-shadow: rgba(79, 70, 229, 0.25);
+}
+
+body.theme-excel {
+    --accent: #10b981;
+    --accent-strong: #059669;
+    --accent2: #34d399;
+    --accent-soft: #ecfdf5;
+    --accent-shadow: rgba(16, 185, 129, 0.25);
+}
+
+body.theme-ai {
+    --accent: #8b5cf6;
+    --accent-strong: #7c3aed;
+    --accent2: #ec4899;
+    --accent-soft: #f5f3ff;
+    --accent-shadow: rgba(139, 92, 246, 0.25);
+}
+
+
 /* Reset & Base Styles */
 * {
     margin: 0;

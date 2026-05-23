@@ -46,61 +46,59 @@ const PORTFOLIO_DATA = {
             image: "projects/thumnail_img/project4.jpg",
             tags: ["O2C Domain", "RBAC", "Rules Traceability"],
             keywords: "erp domain governance sap learning"
+        },
+        {
+            title: "SQL — World Layoffs Cleaning & EDA",
+            link: "projects/sql-layoffs-analysis/index.html",
+            description: "A comprehensive database project focusing on rigorous data cleaning and exploratory analytics of global layoffs. Leverages staging tables, CTEs, Window functions, and complex aggregations.",
+            image: "projects/thumnail_img/sql-layoffs.png",
+            tags: ["SQL", "Data Cleaning", "EDA", "Window Functions"],
+            keywords: "sql database layouts layoffs analytics cleaning eda window cte world staging"
+        },
+        {
+            title: "Excel — Demographics & Sales Dashboard",
+            link: "projects/excel-dashboard/index.html",
+            description: "Cleans raw contact records and engineers an interactive demographic analysis tool for bike buyers. Features advanced logic nested IF formulas, dynamic Pivot Tables, and sleek slicer filters.",
+            image: "projects/thumnail_img/excel-dashboard.png",
+            tags: ["Excel", "Data Cleaning", "Dynamic Slicers", "Pivot Tables"],
+            keywords: "excel dashboard bike buyers demographics pivot tables slicers formulas nested if"
         }
     ],
+
+
+
 
     // 3. TÀI LIỆU HỌC TẬP (LEARN BA)
     learnResources: {
         concepts: [
             {
-                title: "What a BA actually does",
-                description: "Role clarity: discovery, requirements, alignment, and validation.",
-                tags: ["Intro", "Scope", "Stakeholders"],
-                keywords: "role clarity intro scope stakeholders",
-                link: "#"
+                title: "Kiến thức chuyên môn Business Analyst (Udecareer)",
+                description: "Chuyên mục chia sẻ các kiến thức chuyên môn cốt lõi, kỹ năng phân tích thiết kế hệ thống, tài liệu đặc tả và cẩm nang nghề nghiệp dành riêng cho Business Analyst tại Việt Nam.",
+                tags: ["IT BA", "Nghiệp vụ", "Udecareer"],
+                keywords: "udecareer kien thuc chuyen mon ba it kien thuc ba nghiep vu",
+                link: "https://www.udecareer.com/kien-thuc-chuyen-mon/it/ba"
             },
             {
-                title: "User stories vs requirements",
-                description: "How to express needs: stories, acceptance criteria, and exceptions.",
-                tags: ["Writing", "AC", "Edge Cases"],
-                keywords: "user stories requirements writing ac edge cases",
-                link: "#"
-            },
-            {
-                title: "Traceability (RTM) explained",
-                description: "Why linking requirements to tests prevents gaps and scope creep.",
-                tags: ["RTM", "Coverage", "UAT"],
-                keywords: "traceability rtm coverage uat gaps",
-                link: "#"
+                title: "Giới thiệu tổng quan về BABOK Guide",
+                description: "Bài viết giới thiệu chi tiết về BABOK Guide (Business Analysis Body of Knowledge) - Bộ tài liệu chuẩn mực toàn cầu cốt lõi về kỹ năng, kiến thức và các tiêu chuẩn của nghề phân tích nghiệp vụ.",
+                tags: ["BABOK", "IIBA", "Tài liệu"],
+                keywords: "babok guide iiba tieu chuan kien thuc thong tin udecareer",
+                link: "https://www.udecareer.com/bai-viet/babokgioi-thieu-ve-babok-guide_babok5048"
             }
         ],
         templates: [
             {
-                title: "PRD / Requirements template",
-                description: "A practical structure: scope, rules, AC, and non-functional requirements.",
-                keywords: "template prd requirements testable",
-                link: "#",
-                icon: "fa-download",
-                btnText: "Download"
-            },
-            {
-                title: "RTM template",
-                description: "Requirements → design → test cases (coverage you can prove).",
-                keywords: "template rtm coverage design",
-                link: "#",
-                icon: "fa-download",
-                btnText: "Download"
-            },
-            {
-                title: "UAT sign-off pack",
-                description: "Simple pack: scenarios, results, defects, and approval notes.",
-                keywords: "template uat checklist sign-off pack",
-                link: "#",
-                icon: "fa-download",
-                btnText: "Download"
+                title: "Data Analyst Bootcamp Series (Alex The Analyst)",
+                description: "Khóa học Bootcamp phân tích dữ liệu toàn diện cực kỳ nổi tiếng trên YouTube. Hướng dẫn thực hành thực tế chi tiết từ SQL, Excel, Python đến các công cụ trực quan hóa Power BI và Tableau.",
+                keywords: "da bootcamp alex the analyst youtube sql python excel tableau powerbi khoa hoc mien phi",
+                link: "https://www.youtube.com/watch?v=rGx1QNdYzvs&list=PLUaB-1hjhk8FE_XZ87vPPSfHqb6OcM0cF",
+                icon: "fa-play",
+                btnText: "Xem trên Youtube"
             }
         ]
     },
+
+
 
     // 4. CHỨNG CHỈ (CERTIFICATES)
     // Hãy copy/paste thông tin chứng chỉ từ LinkedIn của bạn vào đây!
@@ -124,5 +122,30 @@ const PORTFOLIO_DATA = {
             color: "#fbbf24"
         }
         // Để thêm chứng chỉ thứ 3, chỉ cần thêm dấu phẩy ở trên và copy xuống.
+    ],
+
+    // 5. NGHIÊN CỨU AI (AI RESEARCH)
+    aiResearch: [
+        {
+            title: "MISA AMIS OneAI Deep Dive & Business Model",
+            description: "Phân tích chi tiết nền tảng AMIS OneAI: tích hợp đa LLM (GPT, Gemini, Claude, Grok, DeepSeek, MISA AI), quản trị credit doanh nghiệp, trích xuất file (.docx, .xlsx, .pdf), trợ lý AI ảo và hạ tầng GPU bảo mật trong nước.",
+            tags: ["MISA OneAI", "Orchestration", "Credit Governance", "Data Sovereignty"],
+            keywords: "misa oneai amis ai deep dive model security credit pricing business",
+            link: "projects/misa-oneai-research/index.html"
+        },
+        {
+            title: "Onyx (Danswer) Enterprise GenAI Search & Connectors",
+            description: "Nghiên cứu sâu nền tảng tìm kiếm doanh nghiệp Onyx (Danswer). Đánh giá tính năng Code Interpreter sandbox, phân quyền Curator, 40+ connectors đồng bộ quyền (Permission Sync) và kiến trúc đa lớp Docker (Next.js + FastAPI + Vespa + Postgres + MinIO).",
+            tags: ["Onyx AI", "Code Interpreter", "Vector Search", "FastAPI + Next.js"],
+            keywords: "onyx danswer architecture connector curate group role fastapi vespa docker security sso license compliance",
+            link: "projects/onyx-research/index.html"
+        },
+        {
+            title: "OpenClaw: Self-Hosted Stateful Agent Gateway Architecture",
+            description: "Khảo sát kiến trúc điều phối Agent đa kênh (Telegram, Discord, iMessage) bằng Node.js/TypeScript. Phân tích cơ chế quản lý session (transcript JSONL), nén ngữ cảnh (compaction), skills/plugins và bản làm lại IronClaw bằng Rust.",
+            tags: ["OpenClaw", "Agent Gateway", "Compaction & Memory", "IronClaw Rust"],
+            keywords: "openclaw ironclaw architecture session gateway telegram discord compaction stateful memory node typescript rust",
+            link: "projects/openclaw-architecture/index.html"
+        }
     ]
 };
