@@ -62,6 +62,22 @@ const PORTFOLIO_DATA = {
             image: "projects/thumnail_img/excel-dashboard.png",
             tags: ["Excel", "Data Cleaning", "Dynamic Slicers", "Pivot Tables"],
             keywords: "excel dashboard bike buyers demographics pivot tables slicers formulas nested if"
+        },
+        {
+            title: "A/B Testing: Marketing Campaigns",
+            link: "projects/AB Testing ( marketing campaigns )/index.html",
+            description: "A statistical evaluation of A/B test conversion funnels, spend ROI, and click performance across distinct marketing campaigns using Python and interactive Plotly visualization.",
+            image: "projects/thumnail_img/ab_testing_real.png",
+            tags: ["A/B Testing", "Python", "Plotly", "Statistical ROI"],
+            keywords: "a/b testing marketing campaign conversion rate statistics python plotly hypothesis"
+        },
+        {
+            title: "Instagram Reach Analysis & Predictions",
+            link: "projects/Instagram Reach Analysis Project/index.html",
+            description: "Analyzes Instagram post reach drivers (Explore, Hashtags, Home) and models engagement and followers growth using Python and fully interactive Plotly.js charts.",
+            image: "projects/thumnail_img/instagram_reach_real.png",
+            tags: ["Data Analytics", "Python", "Plotly Express", "Regression Model"],
+            keywords: "instagram reach analysis predictive modeling visualization python plotly social media engagement"
         }
     ],
 
@@ -76,24 +92,60 @@ const PORTFOLIO_DATA = {
                 description: "Chuyên mục chia sẻ các kiến thức chuyên môn cốt lõi, kỹ năng phân tích thiết kế hệ thống, tài liệu đặc tả và cẩm nang nghề nghiệp dành riêng cho Business Analyst tại Việt Nam.",
                 tags: ["IT BA", "Nghiệp vụ", "Udecareer"],
                 keywords: "udecareer kien thuc chuyen mon ba it kien thuc ba nghiep vu",
-                link: "https://www.udecareer.com/kien-thuc-chuyen-mon/it/ba"
+                link: "https://www.udecareer.com/kien-thuc-chuyen-mon/it/ba",
+                visualBg: "linear-gradient(135deg, #6366f1 0%, #4f46e5 100%)",
+                visualIcon: "fas fa-graduation-cap"
             },
             {
                 title: "Giới thiệu tổng quan về BABOK Guide",
                 description: "Bài viết giới thiệu chi tiết về BABOK Guide (Business Analysis Body of Knowledge) - Bộ tài liệu chuẩn mực toàn cầu cốt lõi về kỹ năng, kiến thức và các tiêu chuẩn của nghề phân tích nghiệp vụ.",
                 tags: ["BABOK", "IIBA", "Tài liệu"],
                 keywords: "babok guide iiba tieu chuan kien thuc thong tin udecareer",
-                link: "https://www.udecareer.com/bai-viet/babokgioi-thieu-ve-babok-guide_babok5048"
+                link: "https://www.udecareer.com/bai-viet/babokgioi-thieu-ve-babok-guide_babok5048",
+                visualBg: "linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)",
+                visualIcon: "fas fa-book"
             }
         ],
         templates: [
             {
                 title: "Data Analyst Bootcamp Series (Alex The Analyst)",
-                description: "Khóa học Bootcamp phân tích dữ liệu toàn diện cực kỳ nổi tiếng trên YouTube. Hướng dẫn thực hành thực tế chi tiết từ SQL, Excel, Python đến các công cụ trực quan hóa Power BI và Tableau.",
+                description: "A highly popular, comprehensive Data Analytics Bootcamp on YouTube. Provides hands-on, step-by-step practical guides covering SQL, Excel, Python, and data visualization tools like Power BI and Tableau.",
                 keywords: "da bootcamp alex the analyst youtube sql python excel tableau powerbi khoa hoc mien phi",
                 link: "https://www.youtube.com/watch?v=rGx1QNdYzvs&list=PLUaB-1hjhk8FE_XZ87vPPSfHqb6OcM0cF",
-                icon: "fa-play",
-                btnText: "Xem trên Youtube"
+                icon: "fas fa-play",
+                btnText: "Watch on YouTube",
+                visualBg: "linear-gradient(135deg, #ef4444 0%, #dc2626 100%)",
+                visualIcon: "fab fa-youtube"
+            },
+            {
+                title: "Business Analysis Foundations: Business Process Modeling",
+                description: "An essential LinkedIn Learning course covering business process modeling foundations. Learn standard BPMN 2.0 notation, process mapping, and how to analyze and improve workflows.",
+                keywords: "linkedin learning business process modeling bpmn workflow analysis foundations course",
+                link: "https://www.linkedin.com/learning/business-analysis-foundations-business-process-modeling",
+                icon: "fab fa-linkedin",
+                btnText: "Start Learning",
+                visualBg: "linear-gradient(135deg, #0a66c2 0%, #0077b5 100%)",
+                visualIcon: "fab fa-linkedin-in"
+            },
+            {
+                title: "Requirements Elicitation for Business Analysis: Stakeholder Conversations",
+                description: "Master the art of stakeholder elicitation. Learn active listening techniques, questioning strategies, workshop facilitation, and how to capture requirements accurately through structured conversations.",
+                keywords: "requirements gathering elicitation stakeholder conversations facilitation communication linkedin learning course",
+                link: "https://www.linkedin.com/learning/requirements-elicitation-for-business-analysis-stakeholder-conversations",
+                icon: "fab fa-linkedin",
+                btnText: "Start Learning",
+                visualBg: "linear-gradient(135deg, #0a66c2 0%, #0077b5 100%)",
+                visualIcon: "fab fa-linkedin-in"
+            },
+            {
+                title: "PowerPoint Essential Training (Microsoft 365)",
+                description: "A comprehensive course on PowerPoint Microsoft 365. Master presentation design, slide layouts, storytelling with visual aids, and creating high-impact slides for business stakeholders.",
+                keywords: "powerpoint presentation microsoft 365 storytelling visual design linkedin learning course",
+                link: "https://www.linkedin.com/learning/powerpoint-essential-training-microsoft-365-26213209",
+                icon: "fab fa-linkedin",
+                btnText: "Start Learning",
+                visualBg: "linear-gradient(135deg, #0a66c2 0%, #0077b5 100%)",
+                visualIcon: "fab fa-linkedin-in"
             }
         ]
     },
@@ -101,27 +153,43 @@ const PORTFOLIO_DATA = {
 
 
     // 4. CHỨNG CHỈ (CERTIFICATES)
-    // Hãy copy/paste thông tin chứng chỉ từ LinkedIn của bạn vào đây!
     certificates: [
         {
-            title: "Tên Chứng Chỉ 1 (Thay thế nội dung ở đây)",
-            provider: "Tên Tổ chức Cấp (vd: Google, Coursera)",
-            date: "Tháng/Năm Hoàn thành",
-            link: "https://url-xac-thuc-chung-chi-cua-ban.com",
-            keywords: "certificate credential",
-            icon: "fa-award",
-            color: "#fbbf24"
+            title: "Business Analysis Foundations: Business Process Modeling",
+            provider: "LinkedIn Learning (IIBA® Course)",
+            date: "03/2026",
+            link: "assets/Certificate/CertificateOfCompletion_Business Analysis Foundations Business Process Modeling.pdf",
+            keywords: "business analysis process modeling bpmn iiba linkedin certificate credential",
+            icon: "fa-diagram-project",
+            color: "#0284c7"
         },
         {
-            title: "Agile Scrum Master (Ví dụ)",
-            provider: "Scrum.org",
-            date: "12/2023",
-            link: "#",
-            keywords: "certificate agile scrum",
-            icon: "fa-award",
-            color: "#fbbf24"
+            title: "Requirements Elicitation for Business Analysis: Stakeholder Conversations",
+            provider: "LinkedIn Learning (IIBA® Course)",
+            date: "03/2026",
+            link: "assets/Certificate/CertificateOfCompletion_Requirements Elicitation for Business Analysis Stakeholder Conversations.pdf",
+            keywords: "requirements gathering elicitation business analysis stakeholder engagement iiba linkedin certificate credential",
+            icon: "fa-comments",
+            color: "#0f766e"
+        },
+        {
+            title: "IELTS Academic (Band 6.0 - B2)",
+            provider: "IDP | British Council | Cambridge University Press & Assessment",
+            date: "10/2025",
+            link: "assets/Certificate/IELTS Cer.pdf",
+            keywords: "ielts academic english b2 language test report certificate credential",
+            icon: "fa-language",
+            color: "#e11d48"
+        },
+        {
+            title: "Basics Tutorial on Business",
+            provider: "Business Tutorial Course",
+            date: "01/2026",
+            link: "assets/Certificate/BasicTutorialBusiness_certificate.pdf",
+            keywords: "basics tutorial business foundations certificate credential",
+            icon: "fa-briefcase",
+            color: "#16a34a"
         }
-        // Để thêm chứng chỉ thứ 3, chỉ cần thêm dấu phẩy ở trên và copy xuống.
     ],
 
     // 5. NGHIÊN CỨU AI (AI RESEARCH)

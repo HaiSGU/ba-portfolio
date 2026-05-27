@@ -55,7 +55,15 @@ body {
 
 /* Dynamic Background Elements */
 .bg-orbs {
-    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+    display: block;
 }
 
 .orb {
@@ -771,6 +779,69 @@ footer {
 
 .hero .glass-card .hero-subtitle {
     color: var(--text-secondary) !important;
+}
+
+/* Dynamic Breathing Checkmark Icon */
+.hero-badge i {
+    display: inline-block;
+    animation: badge-check-pulse 2s infinite ease-in-out;
+}
+@keyframes badge-check-pulse {
+    0%, 100% { transform: scale(1); opacity: 1; filter: drop-shadow(0 0 0px rgba(16, 185, 129, 0)); }
+    50% { transform: scale(1.18); opacity: 0.85; filter: drop-shadow(0 0 3px rgba(16, 185, 129, 0.5)); }
+}
+
+/* Sleek Blue Glassmorphism Border for the Stats Card */
+.hero .hero-stats-card {
+    border: 1px solid rgba(255, 255, 255, 0.9) !important;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.4) 100%) !important;
+    box-shadow: 0 30px 60px -15px rgba(37, 99, 235, 0.08), 0 0 0 1px rgba(37, 99, 235, 0.05) !important;
+}
+
+/* Premium Tags Spacing and Interaction Details inside the Tilt Card */
+.hero-stats-card .tag {
+    background: rgba(37, 99, 235, 0.03) !important;
+    border-color: rgba(37, 99, 235, 0.08) !important;
+    color: var(--text-secondary) !important;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s, border-color 0.2s, box-shadow 0.2s !important;
+    font-weight: 600 !important;
+}
+.hero-stats-card .tag:hover {
+    transform: translateY(-2px) scale(1.04) !important;
+    background: rgba(37, 99, 235, 0.08) !important;
+    border-color: rgba(37, 99, 235, 0.2) !important;
+    color: var(--accent-1) !important;
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.08) !important;
+}
+.hero-stats-card .tag i {
+    color: var(--accent-1) !important;
+    margin-right: 6px;
+    transition: transform 0.2s ease !important;
+}
+.hero-stats-card .tag:hover i {
+    transform: scale(1.15) rotate(5deg) !important;
+}
+
+/* List Item Visual Brand Badge on Left */
+.list-item-visual {
+    width: 60px;
+    height: 60px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.6rem;
+    color: white !important;
+    box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.15) !important;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease !important;
+}
+.list-item-visual i {
+    color: white !important;
+}
+.list-item:hover .list-item-visual {
+    transform: scale(1.1) rotate(-5deg) !important;
+    box-shadow: 0 15px 30px -8px rgba(37, 99, 235, 0.25) !important;
 }
 
 

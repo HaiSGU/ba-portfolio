@@ -53,7 +53,7 @@
                         <a href="#contact" class="btn btn-primary" onclick="activateTab('contact')">
                             Let's Talk <i class="fas fa-arrow-right"></i>
                         </a>
-                        <a id="profile-github" href="#" target="_blank" class="btn btn-outline" style="border-color: rgba(255,255,255,0.4); color: white;">
+                        <a id="profile-github" href="#" target="_blank" class="btn btn-outline" style="border-color: var(--accent-1); color: var(--accent-1); background: rgba(37, 99, 235, 0.02);">
                             <i class="fab fa-github"></i> GitHub
                         </a>
                     </div>
@@ -61,21 +61,45 @@
 
                 <!-- Right Side Card -->
                 <div class="glass-card hero-stats-card">
-                    <h3 style="margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <h3 style="margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem; font-weight: 700; font-size: 1.35rem;">
                         <i class="fas fa-toolbox text-gradient"></i> Core Expertise
                     </h3>
                     
-                    <div class="tags-container" style="margin-bottom: 2rem;">
-                        <span class="tag"><i class="fas fa-diagram-project"></i> BPMN / UML</span>
-                        <span class="tag"><i class="fas fa-sitemap"></i> RTM</span>
-                        <span class="tag"><i class="fas fa-list-check"></i> UAT Pack</span>
-                        <span class="tag"><i class="fas fa-table"></i> Decision Tables</span>
-                        <span class="tag"><i class="fas fa-database"></i> SQL / T-SQL</span>
-                        <span class="tag"><i class="fab fa-jira"></i> Jira / Confluence</span>
-                        <span class="tag"><i class="fab fa-figma"></i> Figma</span>
+                    <!-- Category 1: BA Methodologies -->
+                    <h4 style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 0.5rem; font-weight: 700; display: flex; align-items: center; gap: 6px;">
+                        <i class="fas fa-project-diagram" style="color: var(--accent-1); font-size: 0.75rem;"></i> BA Methodologies &amp; Scope
+                    </h4>
+                    <div class="tags-container" style="margin-bottom: 1.25rem;">
+                        <span class="tag tag-bpmn"><i class="fas fa-diagram-project"></i> BPMN / UML</span>
+                        <span class="tag tag-rtm"><i class="fas fa-sitemap"></i> RTM Matrix</span>
+                        <span class="tag tag-uat"><i class="fas fa-list-check"></i> UAT / Test Cases</span>
+                        <span class="tag tag-decision"><i class="fas fa-table"></i> Decision Tables</span>
+                        <span class="tag tag-mvp"><i class="fas fa-compress"></i> MVP Scoping &amp; PRD</span>
+                    </div>
+                    
+                    <!-- Category 2: Data Analytics & Tech -->
+                    <h4 style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 0.5rem; font-weight: 700; display: flex; align-items: center; gap: 6px;">
+                        <i class="fas fa-chart-line" style="color: var(--accent-1); font-size: 0.75rem;"></i> Data Analytics &amp; Tech
+                    </h4>
+                    <div class="tags-container" style="margin-bottom: 1.25rem;">
+                        <span class="tag tag-sql"><i class="fas fa-database"></i> SQL / T-SQL</span>
+                        <span class="tag tag-python"><i class="fab fa-python"></i> Python (Pandas/Plotly)</span>
+                        <span class="tag tag-excel"><i class="fas fa-file-excel"></i> Advanced Excel</span>
+                        <span class="tag tag-ab"><i class="fas fa-flask"></i> A/B Testing &amp; EDA</span>
                     </div>
 
-                    <p class="hero-subtitle" style="font-size: 0.95rem;">
+                    <!-- Category 3: Tools & Systems -->
+                    <h4 style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 0.5rem; font-weight: 700; display: flex; align-items: center; gap: 6px;">
+                        <i class="fas fa-server" style="color: var(--accent-1); font-size: 0.75rem;"></i> Systems &amp; Platforms
+                    </h4>
+                    <div class="tags-container" style="margin-bottom: 1.5rem;">
+                        <span class="tag tag-jira"><i class="fab fa-jira"></i> Jira / Confluence</span>
+                        <span class="tag tag-figma"><i class="fab fa-figma"></i> Figma Wireflows</span>
+                        <span class="tag tag-sap"><i class="fas fa-gears"></i> SAP ERP Governance</span>
+                        <span class="tag tag-ai"><i class="fas fa-brain"></i> Enterprise GenAI</span>
+                    </div>
+
+                    <p class="hero-subtitle" style="font-size: 0.9rem; line-height: 1.5; color: var(--text-secondary); margin-bottom: 0;">
                         My objective is to land a BA role where I can contribute to discovery, requirements, and delivery alignment, building credibility through clear documentation and testable criteria.
                     </p>
                 </div>
@@ -93,7 +117,7 @@
                         <i class="fas fa-layer-group"></i> Case Studies
                     </button>
                     <button class="tab" onclick="activateTab('learn')" data-target="learn">
-                        <i class="fas fa-book-open"></i> Learn (BA)
+                        <i class="fas fa-book-open"></i> Learn
                     </button>
                     <button class="tab" onclick="activateTab('certificates')" data-target="certificates">
                         <i class="fas fa-certificate"></i> Certificates
@@ -142,7 +166,7 @@
         <!-- Section: Learn -->
         <main id="learn" class="section">
             <div style="margin-bottom: 2rem;">
-                <h2>Learn (BA)</h2>
+                <h2>Learn</h2>
                 <p class="hero-subtitle" style="font-size: 1rem;">
                     A curated collection of resources, standard templates, and core concepts for anyone looking to learn Business Analysis.
                 </p>
@@ -152,7 +176,7 @@
             <!-- DYNAMIC CONTENT -->
             <div id="learn-concepts-container" class="list-grid filterable-container"></div>
 
-            <h3 style="margin-top: 3rem; margin-bottom: 1.5rem; color: var(--accent-2);">Standard Templates</h3>
+            <h3 style="margin-top: 3rem; margin-bottom: 1.5rem; color: var(--accent-2);">Recommended Bootcamps &amp; Courses</h3>
             <!-- DYNAMIC CONTENT -->
             <div id="learn-templates-container" class="list-grid filterable-container"></div>
         </main>
@@ -253,6 +277,9 @@
             // Render BA Concepts (staggered delay added)
             const conceptsHtml = PORTFOLIO_DATA.learnResources.concepts.map((item, i) => `
                 <div class="glass-card list-item filter-item" data-keywords="${item.keywords}" style="animation-delay: ${i * 0.08}s;">
+                    <div class="list-item-visual" style="background: ${item.visualBg};">
+                        <i class="${item.visualIcon}"></i>
+                    </div>
                     <div class="list-item-content">
                         <h4 class="list-item-title">${item.title}</h4>
                         <p class="list-item-desc">${item.description}</p>
@@ -268,11 +295,14 @@
             // Render Templates (staggered delay added)
             const templatesHtml = PORTFOLIO_DATA.learnResources.templates.map((item, i) => `
                 <div class="glass-card list-item filter-item" data-keywords="${item.keywords}" style="animation-delay: ${i * 0.08}s;">
+                    <div class="list-item-visual" style="background: ${item.visualBg};">
+                        <i class="${item.visualIcon}"></i>
+                    </div>
                     <div class="list-item-content">
                         <h4 class="list-item-title">${item.title}</h4>
                         <p class="list-item-desc">${item.description}</p>
                     </div>
-                    <a href="${item.link}" target="_blank" class="btn btn-outline"><i class="fas ${item.icon}"></i> ${item.btnText}</a>
+                    <a href="${item.link}" target="_blank" class="btn btn-outline"><i class="${item.icon}"></i> ${item.btnText}</a>
                 </div>
             `).join('');
             document.getElementById('learn-templates-container').innerHTML = templatesHtml;

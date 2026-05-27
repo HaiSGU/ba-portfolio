@@ -64,6 +64,14 @@ body.theme-ai {
     --accent-shadow: rgba(139, 92, 246, 0.25);
 }
 
+body.theme-instagram {
+    --accent: #f97316; /* Instagram orange */
+    --accent-strong: #ea580c;
+    --accent2: #ec4899; /* Instagram pink */
+    --accent-soft: #fff7ed;
+    --accent-shadow: rgba(249, 115, 22, 0.22);
+}
+
 
 /* Reset & Base Styles */
 * {
