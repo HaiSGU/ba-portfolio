@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tableau Workbook Viewer</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    :root {
+      --tableau-blue: #1f77b4;
+      --tableau-blue-soft: #f0f6fa;
+      --tableau-orange: #e15759;
+    }
+
+    body { background: #f4f7fb; }
+
+    .viewer-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .viewer-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .viewer-title-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--tableau-blue), #11558c);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .viewer-title h1 { font-size: 22px; margin: 0 0 4px; color: #1a202c; }
+    .viewer-title p  { margin: 0; font-size: 13px; color: #666; }
+
+    .viewer-toolbar {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .pill {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      background: rgba(31,119,180,0.08);
+      border: 1px solid rgba(31,119,180,0.18);
+      color: var(--tableau-blue);
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      max-width: 52vw;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .status-chip {
+      font-size: 12px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: #e8f5e9;
+      color: #2e7d32;
+      font-weight: 700;
+    }
+    .status-chip.loading { background: #fff8e1; color: #f57f17; }
+    .status-chip.error   { background: #ffebee; color: #b71c1c; }
+
+    /* Summary bar */
+    .summary-bar {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .summary-card {
+      background: white;
+      border: 1px solid rgba(0,0,0,0.07);
+      border-radius: 12px;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      min-width: 160px;
+    }
+
+    .summary-card-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.05rem;
+      flex-shrink: 0;
+    }
+
+    .summary-card-icon.blue   { background: rgba(31,119,180,0.10); color: var(--tableau-blue); }
+    .summary-card-icon.orange { background: rgba(225,87,89,0.10);  color: var(--tableau-orange); }
+    .summary-card-icon.green  { background: rgba(46,125,50,0.10);  color: #2e7d32; }
+    .summary-card-icon.purple { background: rgba(106,27,154,0.10); color: #6a1b9a; }
+
+    .summary-card-info { line-height: 1.3; }
+    .summary-card-val  { font-size: 1.4rem; font-weight: 800; color: #1a202c; }
+    .summary-card-lbl  { font-size: 11px; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
+
+    /* Tabs */
+    .tab-bar {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      border-bottom: 2px solid #e2e8f0;
+      margin-bottom: 16px;
+    }
+
+    .tab-btn {
+      padding: 10px 18px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #64748b;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      border-radius: 8px 8px 0 0;
+      transition: all 0.15s;
+    }
+
+    .tab-btn:hover  { background: #f8fafc; color: #2d3748; }
+    .tab-btn.active { color: var(--tableau-blue); border-bottom-color: var(--tableau-blue); background: rgba(31,119,180,0.04); }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Worksheet list */
+    .ws-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+    }
+
+    .ws-card {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+
+    .ws-card-icon {
+      width: 34px; height: 34px;
+      border-radius: 8px;
+      background: rgba(31,119,180,0.08);
+      color: var(--tableau-blue);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+
+    .ws-card-name { font-weight: 700; font-size: 0.9rem; color: #2d3748; word-break: break-word; }
+    .ws-card-type { font-size: 11px; color: #94a3b8; font-weight: 600; margin-top: 2px; }
+
+    /* Datasource list */
+    .ds-card {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-left: 4px solid var(--tableau-orange);
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+
+    .ds-card-name { font-weight: 800; color: #1a202c; margin-bottom: 4px; }
+    .ds-card-meta { font-size: 12px; color: #64748b; }
+
+    .ds-fields {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .field-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      border: 1px solid;
+    }
+
+    .field-chip.dimension {
+      background: rgba(31,119,180,0.07);
+      border-color: rgba(31,119,180,0.18);
+      color: #1f77b4;
+    }
+
+    .field-chip.measure {
+      background: rgba(225,87,89,0.07);
+      border-color: rgba(225,87,89,0.18);
+      color: #c0392b;
+    }
+
+    .field-chip.calc {
+      background: rgba(106,27,154,0.07);
+      border-color: rgba(106,27,154,0.18);
+      color: #6a1b9a;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 40px 20px;
+      color: #94a3b8;
+    }
+
+    .empty-state i { font-size: 2.5rem; margin-bottom: 12px; opacity: 0.4; }
+
+    .xml-shell {
+      border: 1px solid rgba(0,0,0,0.12);
+      border-radius: 12px;
+      overflow: hidden;
+      background: #0b1020;
+    }
+
+    .xml-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 12px;
+      background: rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.8);
+      font-size: 12px;
+    }
+
+    pre.xml-pre {
+      margin: 0;
+      padding: 14px 16px;
+      overflow: auto;
+      max-height: 60vh;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.88);
+      font-size: 12px;
+      tab-size: 2;
+      white-space: pre;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" style="max-width: 1100px; padding-top: 36px; padding-bottom: 48px;">
+
+    <!-- Header -->
+    <div class="viewer-header">
+      <div class="viewer-title">
+        <div class="viewer-title-icon"><i class="fas fa-chart-pie"></i></div>
+        <div>
+          <h1>Tableau Workbook Viewer</h1>
+          <p>Parses the <code>.twb</code> file and extracts worksheets, datasources &amp; fields.</p>
+        </div>
+      </div>
+      <div class="viewer-toolbar">
+        <button id="backBtn" class="btn btn-secondary" type="button"><i class="fas fa-arrow-left"></i> Back</button>
+        <a id="downloadBtn" class="btn btn-primary" href="#" download><i class="fas fa-download"></i> Download TWB</a>
+        <span id="statusChip" class="status-chip loading">Loading…</span>
+      </div>
+    </div>
+
+    <!-- File pill -->
+    <div style="margin-bottom: 16px;">
+      <span class="pill" id="filePill">—</span>
+    </div>
+
+    <!-- Summary bar -->
+    <div class="summary-bar" id="summaryBar" style="display:none;">
+      <div class="summary-card">
+        <div class="summary-card-icon blue"><i class="fas fa-table-cells"></i></div>
+        <div class="summary-card-info">
+          <div class="summary-card-val" id="countWorksheets">—</div>
+          <div class="summary-card-lbl">Worksheets</div>
+        </div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card-icon orange"><i class="fas fa-database"></i></div>
+        <div class="summary-card-info">
+          <div class="summary-card-val" id="countDatasources">—</div>
+          <div class="summary-card-lbl">Datasources</div>
+        </div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card-icon purple"><i class="fas fa-calculator"></i></div>
+        <div class="summary-card-info">
+          <div class="summary-card-val" id="countCalcs">—</div>
+          <div class="summary-card-lbl">Calc. Fields</div>
+        </div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card-icon green"><i class="fas fa-list"></i></div>
+        <div class="summary-card-info">
+          <div class="summary-card-val" id="countFields">—</div>
+          <div class="summary-card-lbl">Total Fields</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab bar -->
+    <div class="tab-bar" id="tabBar" style="display:none;">
+      <button class="tab-btn active" onclick="switchTab('worksheets', this)"><i class="fas fa-table-cells"></i> Worksheets</button>
+      <button class="tab-btn" onclick="switchTab('datasources', this)"><i class="fas fa-database"></i> Datasources &amp; Fields</button>
+      <button class="tab-btn" onclick="switchTab('rawxml', this)"><i class="fas fa-code"></i> Raw XML</button>
+    </div>
+
+    <!-- Worksheets panel -->
+    <div class="tab-panel active" id="panel-worksheets">
+      <div class="ws-grid" id="wsGrid">
+        <div class="empty-state"><i class="fas fa-circle-notch fa-spin"></i><br>Loading…</div>
+      </div>
+    </div>
+
+    <!-- Datasources panel -->
+    <div class="tab-panel" id="panel-datasources">
+      <div id="dsContainer">
+        <div class="empty-state"><i class="fas fa-circle-notch fa-spin"></i><br>Loading…</div>
+      </div>
+    </div>
+
+    <!-- Raw XML panel -->
+    <div class="tab-panel" id="panel-rawxml">
+      <div class="xml-shell">
+        <div class="xml-topbar">
+          <span>Raw XML source</span>
+          <button id="copyXmlBtn" class="btn btn-outline btn-small" style="padding: 4px 12px; font-size: 12px;">
+            <i class="fas fa-copy"></i> Copy
+          </button>
+        </div>
+        <pre class="xml-pre" id="rawXmlPre">—</pre>
+      </div>
+    </div>
+
+  </div><!-- /container -->
+
+  <script>
+    // ---------------------------------------------------------------
+    // Helpers
+    // ---------------------------------------------------------------
+    function isSafeRelativePath(p) {
+      if (!p) return false;
+      if (p.includes('..') || p.includes('\\') || p.startsWith('/') || p.includes(':')) return false;
+      if (p.startsWith('http://') || p.startsWith('https://')) return false;
+      return true;
+    }
+
+    function setStatus(text, type) {
+      const el = document.getElementById('statusChip');
+      el.textContent = text;
+      el.className = 'status-chip ' + (type || '');
+    }
+
+    function switchTab(id, btn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('panel-' + id).classList.add('active');
+    }
+
+    // ---------------------------------------------------------------
+    // DOM refs
+    // ---------------------------------------------------------------
+    const params      = new URLSearchParams(window.location.search);
+    const file        = params.get('file');
+    const filePillEl  = document.getElementById('filePill');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const backBtn     = document.getElementById('backBtn');
+    const rawXmlPre   = document.getElementById('rawXmlPre');
+    const copyXmlBtn  = document.getElementById('copyXmlBtn');
+
+    backBtn.addEventListener('click', () => {
+      if (window.history.length > 1) window.history.back();
+      else window.location.href = '../index.html';
+    });
+
+    copyXmlBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(rawXmlPre.textContent || '');
+        copyXmlBtn.innerHTML = '<i class="fas fa-check"></i> Copied';
+        setTimeout(() => { copyXmlBtn.innerHTML = '<i class="fas fa-copy"></i> Copy'; }, 1500);
+      } catch { /* silent */ }
+    });
+
+    // ---------------------------------------------------------------
+    // Parse & render TWB (XML)
+    // ---------------------------------------------------------------
+    function parseTwb(xmlText) {
+      const parser = new DOMParser();
+      const doc    = parser.parseFromString(xmlText, 'text/xml');
+
+      // ---- Worksheets ----
+      const wsEls = doc.querySelectorAll('worksheets > worksheet, workbook > worksheets > worksheet');
+      const worksheets = Array.from(wsEls).map(ws => ({
+        name: ws.getAttribute('name') || '(unnamed)',
+        type: ws.querySelector('table') ? 'Data Table' : ws.querySelector('mark') ? 'Chart' : 'Worksheet'
+      }));
+
+      // ---- Datasources ----
+      const dsEls = doc.querySelectorAll('datasources > datasource, workbook > datasources > datasource');
+      const datasources = Array.from(dsEls)
+        .filter(ds => ds.getAttribute('name') && !ds.getAttribute('name').startsWith('Parameters'))
+        .map(ds => {
+          const name    = ds.getAttribute('caption') || ds.getAttribute('name') || '(unnamed)';
+          const connEl  = ds.querySelector('connection');
+          const connType = connEl ? (connEl.getAttribute('class') || connEl.getAttribute('dbname') || '—') : '—';
+
+          // Collect column fields
+          const colEls = ds.querySelectorAll('column');
+          const fields  = Array.from(colEls).map(col => ({
+            name:    col.getAttribute('caption') || col.getAttribute('name') || '(field)',
+            role:    col.getAttribute('role')    || 'dimension',
+            datatype: col.getAttribute('datatype') || '',
+            isCalc:  !!col.querySelector('calculation')
+          })).filter(f => f.name && !f.name.startsWith('['));
+
+          return { name, connType, fields };
+        });
+
+      // ---- Counts ----
+      const allFields = datasources.flatMap(d => d.fields);
+      const calcCount = allFields.filter(f => f.isCalc).length;
+
+      return { worksheets, datasources, totalFields: allFields.length, calcCount };
+    }
+
+    function renderWorksheets(worksheets) {
+      const grid = document.getElementById('wsGrid');
+      if (!worksheets.length) {
+        grid.innerHTML = '<div class="empty-state"><i class="fas fa-circle-xmark"></i><br>No worksheets found.</div>';
+        return;
+      }
+      const iconMap = { 'Data Table': 'fa-table', 'Chart': 'fa-chart-bar', 'Worksheet': 'fa-table-cells' };
+      grid.innerHTML = worksheets.map((ws, i) => `
+        <div class="ws-card">
+          <div class="ws-card-icon"><i class="fas ${iconMap[ws.type] || 'fa-table-cells'}"></i></div>
+          <div>
+            <div class="ws-card-name">${escHtml(ws.name)}</div>
+            <div class="ws-card-type">${ws.type} · Sheet ${i + 1}</div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderDatasources(datasources) {
+      const container = document.getElementById('dsContainer');
+      if (!datasources.length) {
+        container.innerHTML = '<div class="empty-state"><i class="fas fa-circle-xmark"></i><br>No datasources found.</div>';
+        return;
+      }
+      container.innerHTML = datasources.map(ds => {
+        const dims  = ds.fields.filter(f => f.role === 'dimension' && !f.isCalc);
+        const meas  = ds.fields.filter(f => f.role === 'measure'   && !f.isCalc);
+        const calcs = ds.fields.filter(f => f.isCalc);
+
+        const renderChips = (arr, cls) =>
+          arr.slice(0, 40).map(f => `<span class="field-chip ${cls}">${escHtml(f.name)}</span>`).join('');
+
+        return `
+          <div class="ds-card">
+            <div class="ds-card-name"><i class="fas fa-database" style="color: var(--tableau-orange); margin-right: 8px;"></i>${escHtml(ds.name)}</div>
+            <div class="ds-card-meta">Connection type: <strong>${escHtml(ds.connType)}</strong> &nbsp;·&nbsp; ${ds.fields.length} fields total</div>
+            <div class="ds-fields">
+              ${renderChips(dims,  'dimension')}
+              ${renderChips(meas,  'measure')}
+              ${renderChips(calcs, 'calc')}
+              ${ds.fields.length > 40 ? `<span class="field-chip dimension">+${ds.fields.length - 40} more</span>` : ''}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function escHtml(str) {
+      return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    // ---------------------------------------------------------------
+    // Load
+    // ---------------------------------------------------------------
+    async function loadTwb() {
+      if (!isSafeRelativePath(file)) {
+        setStatus('Invalid path', 'error');
+        filePillEl.textContent = '(invalid)';
+        rawXmlPre.textContent  = 'Missing or invalid file path.\nExample: pages/twb-viewer.html?file=projects/Tableau_prj/AirBnb-Project.twb';
+        return;
+      }
+
+      filePillEl.textContent = file;
+      const url = '../' + file;
+      downloadBtn.href = url;
+
+      try {
+        setStatus('Fetching…', 'loading');
+        const res = await fetch(url, { cache: 'no-store' });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+
+        const text = await res.text();
+        rawXmlPre.textContent = text;
+
+        setStatus('Parsing…', 'loading');
+        const { worksheets, datasources, totalFields, calcCount } = parseTwb(text);
+
+        // Summary bar
+        document.getElementById('countWorksheets').textContent  = worksheets.length;
+        document.getElementById('countDatasources').textContent = datasources.length;
+        document.getElementById('countCalcs').textContent       = calcCount;
+        document.getElementById('countFields').textContent      = totalFields;
+        document.getElementById('summaryBar').style.display     = 'flex';
+        document.getElementById('tabBar').style.display         = 'flex';
+
+        renderWorksheets(worksheets);
+        renderDatasources(datasources);
+
+        setStatus('Loaded ✓', '');
+      } catch (err) {
+        setStatus('Failed to load', 'error');
+        rawXmlPre.textContent = 'Could not load file.\n\nError: ' + (err && err.message ? err.message : String(err));
+      }
+    }
+
+    loadTwb();
+  </script>
+</body>
+</html>

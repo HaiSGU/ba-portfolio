@@ -78,6 +78,14 @@ const PORTFOLIO_DATA = {
             image: "projects/thumnail_img/instagram_reach_real.png",
             tags: ["Data Analytics", "Python", "Plotly Express", "Regression Model"],
             keywords: "instagram reach analysis predictive modeling visualization python plotly social media engagement"
+        },
+        {
+            title: "Tableau — Business Intelligence Showcase",
+            link: "projects/Tableau_prj/index.html",
+            description: "Two live Tableau Public dashboards: Seattle Airbnb rental market optimization (pricing maps, seasonal trends, bedroom analysis) and global Video Game Sales analytics (genre treemap, console lifecycles, regional distribution).",
+            image: "projects/thumnail_img/tableau-showcase.png",
+            tags: ["Tableau Public", "Geographic Mapping", "Dual-Axis Chart", "BI Dashboard"],
+            keywords: "tableau dashboard airbnb video game sales charts visualization workbook public embed"
         }
     ],
 

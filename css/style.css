@@ -72,6 +72,14 @@ body.theme-instagram {
     --accent-shadow: rgba(249, 115, 22, 0.22);
 }
 
+body.theme-tableau {
+    --accent: #1f77b4; /* Tableau royal blue */
+    --accent-strong: #11558c;
+    --accent2: #e15759; /* Tableau salmon red/orange */
+    --accent-soft: #f0f6fa;
+    --accent-shadow: rgba(31, 119, 180, 0.25);
+}
+
 
 /* Reset & Base Styles */
 * {
